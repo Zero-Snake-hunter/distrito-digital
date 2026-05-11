@@ -128,7 +128,9 @@
       border-bottom: 1px solid var(--border-soft);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .nav-logo img { height: 36px; width: auto; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo .dd-icon { height: 38px; width: 38px; flex-shrink: 0; }
+    .nav-logo .dd-wordmark { height: 28px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; position: relative; }
     .nav-links a:hover { color: var(--text); }
@@ -423,7 +425,8 @@
 <nav>
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
-      <img src="nombre_solo-06.png" alt="Distrito Digital" />
+      <img src="DD_final-06.png" alt="" class="dd-icon" />
+      <img src="nombre_solo-06.png" alt="Distrito Digital" class="dd-wordmark" />
     </a>
     <ul class="nav-links">
       <li><a href="#sistema">Sistema</a></li>
@@ -431,7 +434,7 @@
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="https://wa.me/524499801124?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
+    <a href="https://wa.me/524492807269?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
        target="_blank" rel="noopener" class="btn btn-cta">
       Diagnóstico Gratis →
     </a>
@@ -457,7 +460,7 @@
           convierten desconocidos en clientes reales.
         </p>
         <div class="hero-actions">
-          <a href="https://wa.me/524499801124?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
+          <a href="https://wa.me/524492807269?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
              target="_blank" rel="noopener" class="btn btn-cta">
             💬 Quiero más clientes
           </a>
@@ -643,7 +646,7 @@
           <div class="plan-feat">Calendario editorial</div>
           <div class="plan-feat">Atención básica de mensajes</div>
         </div>
-        <a href="https://wa.me/524499801124?text=Me%20interesa%20Nivel%201%20Presencia%20Activa"
+        <a href="https://wa.me/524492807269?text=Me%20interesa%20Nivel%201%20Presencia%20Activa"
            target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center">
           Empezar →
         </a>
@@ -667,7 +670,7 @@
           <div class="plan-feat">Optimización mensual de campañas</div>
           <div class="plan-feat">Captura de leads a WhatsApp Business</div>
         </div>
-        <a href="https://wa.me/524499801124?text=Me%20interesa%20Nivel%202%20Atracción%20de%20Clientes"
+        <a href="https://wa.me/524492807269?text=Me%20interesa%20Nivel%202%20Atracción%20de%20Clientes"
            target="_blank" rel="noopener" class="btn btn-teal" style="width:100%;justify-content:center">
           Quiero este plan →
         </a>
@@ -690,7 +693,7 @@
           <div class="plan-feat">Seguimiento de prospectos</div>
           <div class="plan-feat">Dashboard de métricas mensual</div>
         </div>
-        <a href="https://wa.me/524499801124?text=Me%20interesa%20Nivel%203%20Conversión%20Total"
+        <a href="https://wa.me/524492807269?text=Me%20interesa%20Nivel%203%20Conversión%20Total"
            target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center">
           Empezar →
         </a>
@@ -822,16 +825,16 @@
         y tu competencia local — sin costo, sin compromiso.
       </p>
       <div class="cta-btns">
-        <a href="https://wa.me/524499801124?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
+        <a href="https://wa.me/524492807269?text=Quiero%20mi%20diagn%C3%B3stico%20gratuito"
            target="_blank" rel="noopener" class="btn btn-cta" style="font-size:16px;padding:16px 36px">
           💬 Escribir por WhatsApp
         </a>
-        <a href="mailto:hola@distrito.digital" class="btn btn-ghost" style="font-size:16px;padding:16px 36px">
-          ✉️ hola@distrito.digital
+        <a href="mailto:contacto@distrito.digital" class="btn btn-ghost" style="font-size:16px;padding:16px 36px">
+          ✉️ contacto@distrito.digital
         </a>
       </div>
       <p class="cta-contact">
-        O llámanos directamente: <a href="tel:+524499801124">449 980 1124</a>
+        O llámanos directamente: <a href="tel:+524492807269">449 280 7269</a>
       </p>
     </div>
   </div>
@@ -842,7 +845,10 @@
   <div class="container">
     <div class="footer-top">
       <div class="fbrand">
-        <img src="nombre_solo-06.png" alt="Distrito Digital" />
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <img src="DD_final-06.png" alt="" style="height:40px;width:40px" />
+          <img src="nombre_solo-06.png" alt="Distrito Digital" style="height:26px;width:auto" />
+        </div>
         <p class="ftagline">Sistema de crecimiento digital para negocios locales en Aguascalientes, México.</p>
       </div>
       <div class="fcol">
@@ -865,8 +871,8 @@
       <div class="fcol">
         <h5>Contacto</h5>
         <ul>
-          <li><a href="https://wa.me/524499801124">WhatsApp: 449 980 1124</a></li>
-          <li><a href="mailto:hola@distrito.digital">hola@distrito.digital</a></li>
+          <li><a href="https://wa.me/524492807269">WhatsApp: 449 280 7269</a></li>
+          <li><a href="mailto:contacto@distrito.digital">contacto@distrito.digital</a></li>
           <li><a href="https://instagram.com/distrito.digital" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
