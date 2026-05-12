@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Distrito Digital — Aguascalientes</title>
+<meta name="description" content="Agencia de crecimiento digital en Aguascalientes. Sitios web, apps y bots que convierten visitas en clientes."/>
+
+<!-- Preload logo icon -->
+<link rel="preload" as="image" href="DD_final-06.webp" type="image/webp"/>
+
+<!-- Fonts: deferred (no bloquea render) -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Work+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Work+Sans:wght@300;400;500&display=swap"/></noscript>
+
+<style>
+/* ── Reset & tokens ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bk:#07090c;
+  --s1:#0d1117;
+  --s2:#161b22;
+  --bd:rgba(255,255,255,.08);
+  --te:#00d4c8;
+  --go:#f5a623;
+  --vi:#a855f7;
+  --wh:#eef2f6;
+  --mu:#4a5568;
+  --fh:'Outfit',sans-serif;
+  --fb:'Work Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bk);color:var(--wh);font-family:var(--fb);font-weight:300;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ── Reveal animation ───────────────────────────── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.r.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ── Nav ────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;display:flex;align-items:center;
+  padding:0 20px;gap:12px;
+  background:rgba(7,9,12,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bd);
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-icon{width:34px;height:34px;object-fit:contain}
+.brand-word{height:20px;object-fit:contain}
+.brand-fallback{font-family:var(--fh);font-weight:800;font-size:1.1rem;letter-spacing:-.03em}
+.brand-fallback span{color:var(--te)}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{
+  font-family:var(--fh);font-size:.78rem;font-weight:600;
+  padding:6px 12px;border-radius:6px;color:var(--mu);
+  transition:color .2s,background .2s;
+  min-height:44px;display:flex;align-items:center;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--wh);background:rgba(255,255,255,.07)}
+.nav-cta{
+  font-family:var(--fh);font-weight:700;font-size:.78rem;
+  color:#000!important;background:var(--te);
+  padding:8px 16px;border-radius:6px;
+  min-height:44px;display:flex;align-items:center;
+  transition:opacity .2s;
+}
+.nav-cta:hover{opacity:.85}
+.hamburger{
+  display:none;background:none;border:1px solid var(--bd);
+  color:var(--wh);width:44px;height:44px;border-radius:6px;
+  cursor:pointer;font-size:1.2rem;margin-left:auto;
+  align-items:center;justify-content:center;
+}
+
+/* ── Hero ───────────────────────────────────────── */
+.hero{
+  padding:100px 20px 72px;
+  position:relative;overflow:hidden;
+  max-width:1100px;margin:0 auto;
+}
+.hero::before{
+  content:'';position:absolute;top:-100px;left:-60px;
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(0,212,200,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-logos{display:flex;align-items:center;gap:12px;margin-bottom:36px}
+.hero-logos .ico{width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(0,212,200,.35))}
+.hero-logos .word{height:28px;object-fit:contain}
+
+.eyebrow{
+  font-family:var(--fh);font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--te);
+  margin-bottom:18px;display:flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--te)}
+
+.hero h1{
+  font-family:var(--fh);
+  font-size:clamp(2.6rem,7vw,5rem);
+  font-weight:800;letter-spacing:-.03em;line-height:.97;
+  margin-bottom:18px;max-width:680px;
+}
+.hero h1 em{font-style:normal;color:var(--te)}
+.hero p{color:#5a6a7a;max-width:440px;margin-bottom:32px;font-size:.97rem}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fh);font-weight:700;font-size:.88rem;
+  padding:13px 24px;border-radius:7px;
+  transition:transform .2s,opacity .2s;min-height:44px;cursor:pointer;
+}
+.btn-te{background:var(--te);color:#000;box-shadow:0 0 24px rgba(0,212,200,.2)}
+.btn-te:hover{transform:translateY(-2px)}
+.btn-gh{border:1px solid var(--bd);color:var(--wh)}
+.btn-gh:hover{background:rgba(255,255,255,.05)}
+
+/* Stats strip */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--bd);
+  border:1px solid var(--bd);border-radius:11px;overflow:hidden;
+  max-width:620px;margin:52px 0 0;
+}
+.stat{background:var(--s2);padding:20px 16px}
+.stat-n{font-family:var(--fh);font-size:1.6rem;font-weight:800;color:var(--te)}
+.stat-l{font-size:.73rem;color:var(--mu);margin-top:2px}
+
+/* ── Sección genérica ───────────────────────────── */
+.sec{max-width:1100px;margin:0 auto;padding:72px 20px}
+.ey{
+  font-family:var(--fh);font-size:.66rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--te);margin-bottom:10px;
+}
+h2{
+  font-family:var(--fh);
+  font-size:clamp(1.7rem,3.5vw,2.6rem);
+  font-weight:800;letter-spacing:-.02em;margin-bottom:10px;
+}
+.sub{color:#5a6a7a;max-width:460px;margin-bottom:40px;font-size:.93rem}
+
+/* ── Proyectos grid ─────────────────────────────── */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.proj-card{
+  background:var(--s2);border:1px solid var(--bd);
+  border-radius:14px;padding:28px 22px;
+  display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s;
+  position:relative;overflow:hidden;
+}
+.proj-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transition:opacity .25s;
+}
+.proj-card:hover{transform:translateY(-3px)}
+
+/* Colores por proyecto */
+.proj-dd::before{background:var(--te)}
+.proj-dd:hover{border-color:rgba(0,212,200,.4)}
+.proj-fucho::before{background:var(--go)}
+.proj-fucho:hover{border-color:rgba(245,166,35,.4)}
+.proj-sefirot::before{background:var(--vi)}
+.proj-sefirot:hover{border-color:rgba(168,85,247,.4)}
+.proj-bots::before{background:#25d366}
+.proj-bots:hover{border-color:rgba(37,211,102,.4)}
+
+.proj-logo{
+  width:48px;height:48px;object-fit:contain;
+  margin-bottom:16px;border-radius:10px;
+}
+.proj-logo-fallback{
+  width:48px;height:48px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fh);font-weight:800;font-size:1.1rem;
+  margin-bottom:16px;
+}
+.proj-dd .proj-logo-fallback{background:rgba(0,212,200,.12);color:var(--te)}
+.proj-fucho .proj-logo-fallback{background:rgba(245,166,35,.12);color:var(--go)}
+.proj-sefirot .proj-logo-fallback{background:rgba(168,85,247,.12);color:var(--vi)}
+.proj-bots .proj-logo-fallback{background:rgba(37,211,102,.12);color:#25d366}
+
+.proj-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--fh);font-size:.66rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:100px;
+  margin-bottom:12px;
+}
+.proj-dd .proj-tag{background:rgba(0,212,200,.1);color:var(--te)}
+.proj-fucho .proj-tag{background:rgba(245,166,35,.1);color:var(--go)}
+.proj-sefirot .proj-tag{background:rgba(168,85,247,.1);color:var(--vi)}
+.proj-bots .proj-tag{background:rgba(37,211,102,.1);color:#25d366}
+.proj-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+.proj-card h3{
+  font-family:var(--fh);font-weight:700;font-size:1.05rem;
+  margin-bottom:8px;
+}
+.proj-card p{font-size:.86rem;color:#5a6a7a;line-height:1.6;margin-bottom:18px;flex:1}
+
+.proj-price{
+  font-family:var(--fh);font-size:.78rem;font-weight:600;
+  color:var(--mu);margin-bottom:14px;
+}
+.proj-price span{color:var(--wh);font-weight:700}
+
+.proj-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--fh);font-size:.8rem;font-weight:700;
+  padding:9px 16px;border-radius:7px;
+  transition:opacity .2s,transform .2s;min-height:44px;
+  align-self:flex-start;
+}
+.proj-link:hover{opacity:.85;transform:translateX(3px)}
+.proj-dd .proj-link{border:1px solid var(--te);color:var(--te)}
+.proj-fucho .proj-link{background:var(--go);color:#000}
+.proj-sefirot .proj-link{border:1px solid var(--vi);color:var(--vi)}
+.proj-bots .proj-link{background:#25d366;color:#000}
+
+/* ── CTA final ──────────────────────────────────── */
+.cta-end{
+  border-top:1px solid var(--bd);
+  background:rgba(0,212,200,.03);
+  padding:72px 20px;text-align:center;
+}
+.cta-end h2{margin-bottom:10px}
+.cta-end p{color:var(--mu);max-width:420px;margin:0 auto 32px;font-size:.93rem}
+.cta-end .cta-row{justify-content:center}
+
+/* ── Footer ─────────────────────────────────────── */
+footer{
+  padding:32px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--bd);flex-wrap:wrap;gap:20px;
+  max-width:1100px;margin:0 auto;
+}
+.ft-brand{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--mu)}
+.ft-brand img{height:22px;object-fit:contain}
+.ft-links{display:flex;gap:20px;flex-wrap:wrap}
+.ft-links a{
+  font-size:.78rem;color:var(--mu);
+  transition:color .2s;min-height:44px;display:flex;align-items:center;
+}
+.ft-links a:hover{color:var(--te)}
+.ft-copy{font-size:.72rem;color:var(--mu);width:100%;text-align:center;padding-top:12px;border-top:1px solid var(--bd)}
+
+/* ── Responsive ─────────────────────────────────── */
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;
+    background:rgba(7,9,12,.98);flex-direction:column;
+    padding:12px;gap:4px;border-bottom:1px solid var(--bd)}
+  .nav-links.open{display:flex}
+  .nav-links a,.nav-cta{min-height:48px;font-size:.85rem}
+  .hamburger{display:flex}
+  .projects{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+  .ft-links{justify-content:center}
+}
+@media(min-width:769px) and (max-width:960px){
+  .projects{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="/" class="brand" aria-label="Distrito Digital">
+    <picture>
+      <source srcset="DD_final-06.webp" type="image/webp"/>
+      <img src="DD_final-06.png" alt="Distrito Digital" class="brand-icon" width="34" height="34"/>
+    </picture>
+    <picture>
+      <source srcset="nombre_solo-06.webp" type="image/webp"/>
+      <img src="nombre_solo-06.png" alt="DistritoDigital" class="brand-word" width="140" height="20"/>
+    </picture>
+  </a>
+  <nav class="nav-links" id="nav-links" aria-label="Menú principal">
+    <a href="dd.html">Agencia</a>
+    <a href="bots.html">Bots</a>
+    <a href="fucho.html">FuchoMX</a>
+    <a href="sefirot.html">Sefirot</a>
+    <a href="https://wa.me/524492807269" class="nav-cta" target="_blank" rel="noopener">WhatsApp ↗</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+</nav>
+
+<!-- ── Hero ── -->
+<main>
+<section class="hero">
+  <div class="hero-logos r">
+    <picture>
+      <source srcset="DD_final-06.webp" type="image/webp"/>
+      <img src="DD_final-06.png" alt="Distrito Digital" class="ico" width="56" height="56"/>
+    </picture>
+    <picture>
+      <source srcset="nombre_solo-06.webp" type="image/webp"/>
+      <img src="nombre_solo-06.png" alt="DistritoDigital" class="word" width="180" height="28"/>
+    </picture>
+  </div>
+
+  <p class="eyebrow r d1">Aguascalientes · Digital</p>
+
+  <h1 class="r d2">
+    Tu negocio merece<br/>
+    crecer <em>en digital</em>
+  </h1>
+
+  <p class="r d3">
+    Diseñamos sitios web, apps y bots que no solo se ven bien —
+    están construidos para convertir visitas en clientes reales.
+  </p>
+
+  <div class="cta-row r d4">
+    <a href="https://wa.me/524492807269" class="btn btn-te" target="_blank" rel="noopener">
+      💬 Hablar por WhatsApp
+    </a>
+    <a href="dd.html" class="btn btn-gh">Ver la agencia →</a>
+  </div>
+
+  <div class="stats r d4" aria-label="Mercado en Aguascalientes">
+    <div class="stat">
+      <div class="stat-n">1.2M</div>
+      <div class="stat-l">Habitantes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">800K</div>
+      <div class="stat-l">Con smartphone</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">240K</div>
+      <div class="stat-l">Negocios locales</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Proyectos ── -->
+<section class="sec">
+  <p class="ey r">Nuestros proyectos</p>
+  <h2 class="r d1">Lo que construimos</h2>
+  <p class="sub r d2">
+    De la agencia hasta las apps — todo pensado para negocios en Aguascalientes y México.
+  </p>
+
+  <div class="projects">
+
+    <!-- Distrito Digital -->
+    <article class="proj-card proj-dd r">
+      <picture>
+        <source srcset="DD_final-06.webp" type="image/webp"/>
+        <img src="DD_final-06.png" alt="Distrito Digital" class="proj-logo" width="48" height="48" loading="lazy"/>
+      </picture>
+      <span class="proj-tag">Agencia</span>
+      <h3>Distrito Digital</h3>
+      <p>
+        Sistema de conversión digital para negocios locales.
+        Sitios web, estrategia y resultados medibles — sin contratos eternos.
+      </p>
+      <p class="proj-price">Planes desde <span>$6,000 MXN/mes</span></p>
+      <a href="dd.html" class="proj-link">Ver planes y precios →</a>
+    </article>
+
+    <!-- FuchoMX -->
+    <article class="proj-card proj-fucho r d1">
+      <picture>
+        <source srcset="fucho_logo.webp" type="image/webp"/>
+        <img src="fucho_logo.png" alt="FuchoMX" class="proj-logo" width="48" height="48" loading="lazy"/>
+      </picture>
+      <span class="proj-tag">App · iOS & Android</span>
+      <h3>FuchoMX</h3>
+      <p>
+        La app de quinielas de la Liga MX. Ligas privadas, 294 jugadores,
+        estadísticas en tiempo real y patrocinios para empresas.
+      </p>
+      <p class="proj-price">Descarga <span>gratuita</span></p>
+      <a href="fucho.html" class="proj-link">Conocer FuchoMX →</a>
+    </article>
+
+    <!-- Árbol de Sefirot -->
+    <article class="proj-card proj-sefirot r d2">
+      <picture>
+        <source srcset="Sefirot_Logo.webp" type="image/webp"/>
+        <img src="Sefirot_Logo.png" alt="Árbol de Sefirot" class="proj-logo" width="48" height="48" loading="lazy"/>
+      </picture>
+      <span class="proj-tag">Bot · Iglesias</span>
+      <h3>Árbol de Sefirot</h3>
+      <p>
+        Bot de WhatsApp diseñado para iglesias y comunidades de fe.
+        Automatiza comunicaciones, eventos y seguimiento de miembros.
+      </p>
+      <p class="proj-price">Desde <span>$900 MXN/mes</span></p>
+      <a href="sefirot.html" class="proj-link">Ver Sefirot →</a>
+    </article>
+
+    <!-- Bots WhatsApp IA -->
+    <article class="proj-card proj-bots r d3">
+      <div class="proj-logo-fallback" aria-hidden="true">🤖</div>
+      <span class="proj-tag">IA · Negocios</span>
+      <h3>Bots WhatsApp IA</h3>
+      <p>
+        Automatización con inteligencia artificial para negocios. Respuestas
+        24/7, ventas automáticas y atención al cliente sin costo extra.
+      </p>
+      <p class="proj-price">Setup desde <span>$2,000 MXN</span></p>
+      <a href="bots.html" class="proj-link">Ver Bots IA →</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ── CTA final ── -->
+<section class="cta-end">
+  <p class="ey r">Empieza hoy</p>
+  <h2 class="r d1">¿Listo para crecer?</h2>
+  <p class="r d2">
+    Escríbenos por WhatsApp o correo. Sin formularios largos,
+    sin esperas — respondemos el mismo día.
+  </p>
+  <div class="cta-row r d3">
+    <a href="https://wa.me/524492807269" class="btn btn-te" target="_blank" rel="noopener">
+      💬 449 280 7269
+    </a>
+    <a href="mailto:contacto@distrito.digital" class="btn btn-gh">
+      ✉️ contacto@distrito.digital
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="ft-brand">
+    <picture>
+      <source srcset="nombre_solo-06.webp" type="image/webp"/>
+      <img src="nombre_solo-06.png" alt="DistritoDigital" width="120" height="18" loading="lazy"/>
+    </picture>
+    <span>· Aguascalientes, México</span>
+  </div>
+  <nav class="ft-links" aria-label="Links del footer">
+    <a href="dd.html">Agencia</a>
+    <a href="bots.html">Bots IA</a>
+    <a href="fucho.html">FuchoMX</a>
+    <a href="sefirot.html">Sefirot</a>
+    <a href="https://instagram.com/distrito.digital" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:contacto@distrito.digital">Contacto</a>
+  </nav>
+  <p class="ft-copy">© 2026 Distrito Digital · Todos los derechos reservados</p>
+</footer>
+
+<script>
+// Hamburger menu
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('nav-links');
+ham.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  ham.setAttribute('aria-expanded', open);
+  ham.textContent = open ? '✕' : '☰';
+});
+// Close on link click
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  ham.setAttribute('aria-expanded', false);
+  ham.textContent = '☰';
+}));
+
+// Reveal on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+// Active nav link
+const links = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+links.forEach(a => {
+  if(a.href === location.href) a.classList.add('active');
+});
+</script>
+</body>
+</html>
