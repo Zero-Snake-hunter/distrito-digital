@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviso de Privacidad — FuchoMX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #090909;
+      --red: #E63946;
+      --white: #FFFFFF;
+      --gray: #AAAAAA;
+      --surface: #181818;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9,9,9,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(230,57,70,0.2);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--red);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .logo-text span {
+      color: var(--red);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 40px 60px;
+      max-width: 780px;
+      margin: 0 auto;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 80px);
+      letter-spacing: 3px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: var(--gray);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta span::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    p {
+      color: var(--gray);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 14px 0;
+    }
+
+    ul li {
+      color: var(--gray);
+      font-size: 15px;
+      padding: 8px 0 8px 20px;
+      border-bottom: 1px solid #141414;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-size: 13px;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid #222;
+      border-left: 3px solid var(--red);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-top: 20px;
+    }
+
+    .contact-card p {
+      margin-bottom: 6px;
+    }
+
+    .contact-card a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+
+    footer span {
+      color: var(--red);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { padding: 16px 20px; }
+      .hero { padding: 60px 20px 40px; }
+      .content { padding: 40px 20px 80px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark">F</div>
+    <div class="logo-text">FUCHO<span>MX</span></div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Aviso de Privacidad</p>
+    <h1>TUS DATOS,<br>BAJO CONTROL</h1>
+    <div class="hero-meta">
+      <span>FuchoMX — México</span>
+      <span>Última actualización: mayo 2026</span>
+      <span>LFPDPPP</span>
+    </div>
+  </section>
+
+  <main class="content">
+
+    <div class="section">
+      <p class="section-number">00 — INTRODUCCIÓN</p>
+      <h2>¿QUIÉNES SOMOS?</h2>
+      <p><strong>FuchoMX</strong> es una aplicación móvil gratuita de predicción de partidos (FuchoQuiniela) y fútbol de fantasía (FuchoOnce) basada en la Liga MX, desarrollada y operada desde Aguascalientes, México.</p>
+      <p>El presente Aviso de Privacidad se emite en cumplimiento de la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong> y su Reglamento.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-number">01 — DATOS QUE RECOLECTAMOS</p>
+      <h2>INFORMACIÓN PERSONAL</h2>
+      <p>Al registrarte y usar FuchoMX, podemos recolectar los siguientes datos:</p>
+      <ul>
+        <li><strong>Datos de registro:</strong> nombre de usuario y correo electrónico</li>
+        <li><strong>Datos de uso:</strong> predicciones realizadas, alineaciones de fantasía, puntuaciones y logros</li>
+        <li><strong>Datos de rendimiento:</strong> estadísticas de participación en jornadas y ligas</li>
+        <li><strong>Información del dispositivo:</strong> sistema operativo y versión de la app (para soporte técnico)</li>
+      </ul>
+      <p>No recolectamos datos sensibles como información financiera, bancaria, de salud ni datos biométricos.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-number">02 — USO DE LA INFORMACIÓN</p>
+      <h2>¿PARA QUÉ USAMOS TUS DATOS?</h2>
+      <p>Los datos recolectados se utilizan exclusivamente para las siguientes finalidades:</p>
+      <ul>
+        <li>Crear y gestionar tu cuenta de usuario</li>
+        <li>Operar las funciones de quiniela, fútbol de fantasía y ligas privadas</li>
+        <li>Calcular y mostrar rankings, puntuaciones y logros</li>
+        <li>Mejorar la experiencia y el rendimiento de la app</li>
+        <li>Enviarte notificaciones relacionadas con la app (resultados, jornadas)</li>
+        <li>Atender solicitudes de soporte técnico</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <p class="section-number">03 — COMPARTICIÓN DE DATOS</p>
+      <h2>¿COMPARTIMOS TU INFORMACIÓN?</h2>
+      <p><strong>FuchoMX no vende, renta ni comercializa tus datos personales</strong> a ningún tercero.</p>
+      <p>Tu información puede ser compartida únicamente en los siguientes casos:</p>
+      <ul>
+        <li><strong>Proveedores de infraestructura técnica</strong> (servicios de hosting y base de datos) bajo acuerdos de confidencialidad</li>
+        <li><strong>Autoridades competentes</strong>, cuando la ley mexicana así lo exija</li>
+      </ul>
+      <p>Los patrocinadores que aparecen en la app no tienen acceso a tus datos personales identificables.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-number">04 — TUS DERECHOS (ARCO)</p>
+      <h2>DERECHOS DE ACCESO, RECTIFICACIÓN, CANCELACIÓN Y OPOSICIÓN</h2>
+      <p>Como titular de tus datos personales, tienes derecho a:</p>
+      <ul>
+        <li><strong>Acceder</strong> a los datos personales que tenemos sobre ti</li>
+        <li><strong>Rectificar</strong> tus datos en caso de ser incorrectos o incompletos</li>
+        <li><strong>Cancelar</strong> tu cuenta y solicitar la eliminación de tus datos</li>
+        <li><strong>Oponerte</strong> al tratamiento de tus datos para finalidades específicas</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, contáctanos directamente por correo electrónico.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-number">05 — SEGURIDAD</p>
+      <h2>¿CÓMO PROTEGEMOS TUS DATOS?</h2>
+      <p>Implementamos medidas técnicas y administrativas para proteger tu información contra accesos no autorizados, pérdida o alteración, incluyendo:</p>
+      <ul>
+        <li>Conexiones cifradas mediante HTTPS</li>
+        <li>Contraseñas almacenadas con hashing seguro</li>
+        <li>Acceso restringido a la base de datos</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <p class="section-number">06 — CAMBIOS A ESTE AVISO</p>
+      <h2>ACTUALIZACIONES</h2>
+      <p>FuchoMX puede actualizar este Aviso de Privacidad en cualquier momento. Cuando lo hagamos, notificaremos a los usuarios dentro de la app y actualizaremos la fecha de "última actualización" en esta página.</p>
+      <p>El uso continuo de la app después de dichos cambios constituye tu aceptación de la nueva versión.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-number">07 — CONTACTO</p>
+      <h2>¿TIENES DUDAS?</h2>
+      <p>Para cualquier pregunta sobre este Aviso de Privacidad o para ejercer tus derechos ARCO, comunícate con nosotros:</p>
+      <div class="contact-card">
+        <p><strong>FuchoMX</strong></p>
+        <p>Aguascalientes, México</p>
+        <p>Email: <a href="mailto:contacto@fuchomx.mx">contacto@fuchomx.mx</a></p>
+        <p>WhatsApp: <a href="https://wa.me/524492807269">+52 449 280 7269</a></p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 <span>FUCHO</span>MX · Todos los derechos reservados · Aguascalientes, México
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
