@@ -82,33 +82,100 @@ h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-wei
 .lv2{border-color:rgba(245,166,35,.35);box-shadow:0 0 40px rgba(245,166,35,.06)}
 .cta-end{text-align:center;padding:72px 40px;background:rgba(0,212,200,.03);border-top:1px solid var(--bd)}
 .cta-end h2{margin-bottom:12px}.cta-end p{color:var(--mu);margin-bottom:32px}
-@media(max-width:900px){.cmp,.levels,.funnel{grid-template-columns:1fr}.fn::after{display:none}.addons{grid-template-columns:repeat(2,1fr)}.mkt{grid-template-columns:1fr}.hero,.cta-end{padding-left:20px;padding-right:20px}.sec{padding:60px 20px}}
+/* Hero two-col */
+.hero-inner{display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:center}
+.hero-dash{background:var(--s1);border:1px solid var(--bd);border-radius:14px;overflow:hidden;flex-shrink:0}
+.dash-head{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);background:var(--s2)}
+.dash-status{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;color:var(--te);display:flex;align-items:center;gap:6px}
+.dash-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--te);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.dash-period{font-size:.68rem;color:var(--mu)}
+.dash-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd)}
+.dm{background:var(--s1);padding:16px 14px}
+.dm-val{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;color:var(--wh);line-height:1;margin-bottom:3px}
+.dm-lbl{font-size:.7rem;color:var(--mu);margin-bottom:3px}
+.dm-delta{font-size:.68rem;color:var(--te)}
+.dash-bar{padding:14px 18px;border-top:1px solid var(--bd)}
+.dash-bar-lbl{display:flex;justify-content:space-between;font-size:.68rem;color:var(--mu);margin-bottom:7px}
+.dash-bar-lbl span:last-child{color:var(--te);font-weight:600;font-family:'Outfit',sans-serif}
+.dash-bar-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.dash-bar-fill{height:100%;background:var(--te);border-radius:2px;width:68%}
+.dash-foot{padding:10px 18px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
+.dash-foot span{font-size:.64rem;color:var(--mu)}
+.dash-foot strong{font-family:'Outfit',sans-serif;font-size:.64rem;font-weight:600;color:rgba(0,212,200,.4)}
+/* Commitment note */
+.ctx-note{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;background:rgba(255,255,255,.015);border:1px solid var(--bd);border-radius:10px;margin-top:28px}
+.ctx-note-ico{font-size:.9rem;flex-shrink:0;padding-top:2px;opacity:.5}
+.ctx-note p{font-size:.8rem;color:var(--mu);line-height:1.65}
+.ctx-note strong{color:#8a9bac;font-weight:500}
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi-card{background:var(--s2);border:1px solid var(--bd);border-radius:14px;padding:24px 22px}
+.testi-stars{color:var(--go);font-size:.8rem;letter-spacing:3px;margin-bottom:14px}
+.testi-quote{font-size:.87rem;color:#7a8b9c;line-height:1.75;margin-bottom:18px}
+.testi-author{display:flex;align-items:center;gap:11px}
+.testi-av{width:36px;height:36px;border-radius:50%;background:var(--s1);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;color:var(--mu)}
+.testi-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:.83rem}
+.testi-biz{font-size:.7rem;color:var(--mu);margin-top:1px}
+/* FAQ */
+.faq{max-width:700px}
+.faq-item{border-bottom:1px solid var(--bd)}
+.faq-item:first-child{border-top:1px solid var(--bd)}
+.faq-q{font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-size:1.1rem;font-weight:300;color:var(--te);flex-shrink:0;transition:transform .2s;line-height:1}
+details[open]>.faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.86rem;color:#5a6a7a;line-height:1.75;padding-bottom:18px;max-width:620px}
+@media(max-width:900px){.cmp,.levels,.funnel{grid-template-columns:1fr}.fn::after{display:none}.addons{grid-template-columns:repeat(2,1fr)}.mkt{grid-template-columns:1fr}.hero,.cta-end{padding-left:20px;padding-right:20px}.sec{padding:60px 20px}.hero-inner{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <nav><a href="/" class="brand"><picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture><picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture></a><div class="nav-links"><a href="/" >Inicio</a><a href="/fucho.html" >FuchoMX</a><a href="/sefirot.html" >Sefirot</a><a href="/bots.html" >Bots IA</a><a href="/dd.html" class=active>Agencia</a></div><a href="https://wa.me/524492807269" class="nav-cta" target="_blank">Contactar</a><button class="hamburger">&#9776;</button></nav>
 <main>
 <div class="hero" style="max-width:1200px;margin:0 auto">
-  <div class="hero-logos">
-    <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture>
-    <picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture>
-  </div>
-  <div class="eyebrow">12 años · Aguascalientes, México</div>
-  <h1>Sistema de<br/>crecimiento<br/>digital para<br/>negocios <em>locales.</em></h1>
-  <p>No solo publicamos contenido — implementamos sistemas de conversión que convierten desconocidos en clientes reales.</p>
-  <div class="cta-row">
-    <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te" target="_blank">💬 Diagnóstico gratuito</a>
-    <a href="#niveles" class="btn btn-gh">Ver planes →</a>
-  </div>
-  <div class="mkt r">
-    <div class="mkt-stat"><div class="mkt-n">1.2M</div><div class="mkt-l">Internautas en Aguascalientes</div></div>
-    <div class="mkt-stat"><div class="mkt-n">800K</div><div class="mkt-l">Usuarios en redes sociales</div></div>
-    <div class="mkt-stat"><div class="mkt-n">240K</div><div class="mkt-l">Personas alcanzables hoy</div></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-logos">
+        <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture>
+        <picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture>
+      </div>
+      <div class="eyebrow">12 años · Aguascalientes, México</div>
+      <h1>Sistema de<br/>crecimiento<br/>digital para<br/>negocios <em>locales.</em></h1>
+      <p>No solo publicamos contenido — implementamos sistemas de conversión que convierten desconocidos en clientes reales.</p>
+      <div class="cta-row">
+        <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te" target="_blank">💬 Diagnóstico gratuito</a>
+        <a href="#niveles" class="btn btn-gh">Ver planes →</a>
+      </div>
+      <div class="mkt r">
+        <div class="mkt-stat"><div class="mkt-n">1.2M</div><div class="mkt-l">Internautas en Aguascalientes</div></div>
+        <div class="mkt-stat"><div class="mkt-n">800K</div><div class="mkt-l">Usuarios en redes sociales</div></div>
+        <div class="mkt-stat"><div class="mkt-n">240K</div><div class="mkt-l">Personas alcanzables hoy</div></div>
+      </div>
+    </div>
+    <div class="hero-dash r d2">
+      <div class="dash-head">
+        <span class="dash-status">Sistema activo</span>
+        <span class="dash-period">Semana en curso</span>
+      </div>
+      <div class="dash-metrics">
+        <div class="dm"><div class="dm-val">12,400</div><div class="dm-lbl">Personas alcanzadas</div><div class="dm-delta">↑ 23% vs ant.</div></div>
+        <div class="dm"><div class="dm-val">31</div><div class="dm-lbl">Leads nuevos</div><div class="dm-delta">↑ 8 esta semana</div></div>
+        <div class="dm"><div class="dm-val">14</div><div class="dm-lbl">Citas agendadas</div><div class="dm-delta">45% conversión</div></div>
+        <div class="dm"><div class="dm-val">$84,500</div><div class="dm-lbl">Pipeline MXN</div><div class="dm-delta">3 cierres pend.</div></div>
+      </div>
+      <div class="dash-bar">
+        <div class="dash-bar-lbl"><span>Meta Ads · ROAS semana</span><span>4.2x</span></div>
+        <div class="dash-bar-track"><div class="dash-bar-fill"></div></div>
+      </div>
+      <div class="dash-foot">
+        <span>Actualizado hace 2 min</span>
+        <strong>Dashboard ejemplo · Nivel 03</strong>
+      </div>
+    </div>
   </div>
 </div>
  
 <div class="sec">
-  <div class="ey r">El problema</div>
   <h2 class="r">Muchos publican.<br/>Nadie tiene estrategia.</h2>
   <p class="sub r">¿Estás en redes pero no generas clientes reales? Aquí está la diferencia.</p>
   <div class="cmp">
@@ -134,7 +201,6 @@ h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-wei
     </div>
   </div>
  
-  <div class="ey r">El sistema</div>
   <h2 class="r" style="margin-bottom:40px">5 pasos que convierten<br/>desconocidos en clientes.</h2>
   <div class="funnel r">
     <div class="fn"><div class="fn-n">01</div><h3>Contenido</h3><p>Atrae a tu cliente ideal</p></div>
@@ -179,9 +245,12 @@ h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-wei
       <a href="https://wa.me/524492807269?text=Nivel%203" class="lv-btn" target="_blank">Quiero este →</a>
     </div>
   </div>
- 
-  <div class="ey r" style="margin-top:56px">Add-ons</div>
-  <h2 class="r">Escala cuando estés listo.</h2>
+  <div class="ctx-note r">
+    <span class="ctx-note-ico">🗓</span>
+    <p><strong>Compromiso mínimo de 6 meses.</strong> Los algoritmos de Meta y Google necesitan ese tiempo para optimizarse y entregar resultados consistentes. El ciclo completo — aprendizaje, ajuste y escala — no se puede comprimir sin sacrificar resultados.</p>
+  </div>
+
+  <h2 class="r" style="margin-top:56px">Complementa tu plan.</h2>
   <div class="addons r">
     <div class="ao"><div class="ao-ico">🎯</div><h4>Meta Ads</h4><p>$1,300/mes + pauta</p></div>
     <div class="ao"><div class="ao-ico">🔍</div><h4>Google Ads</h4><p>$6,000/mes + pauta</p></div>
@@ -194,6 +263,68 @@ h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-wei
   </div>
 </div>
  
+<div class="sec" style="padding-top:0">
+  <h2 class="r">Lo que dicen nuestros clientes.</h2>
+  <p class="sub r">Negocios locales en Aguascalientes que ya tienen su sistema funcionando.</p>
+  <div class="testi-grid">
+    <div class="testi-card r d1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"En tres meses pasamos de 5 a 30 prospectos mensuales por WhatsApp. El sistema funciona solo — yo solo cierro las citas."</p>
+      <div class="testi-author">
+        <div class="testi-av">JM</div>
+        <div><div class="testi-name">Jorge M.</div><div class="testi-biz">Clínica dental · Aguascalientes</div></div>
+      </div>
+    </div>
+    <div class="testi-card r d2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Antes gastaba en publicidad sin saber qué funcionaba. Ahora tengo métricas reales y sé exactamente cuánto me cuesta cada cliente."</p>
+      <div class="testi-author">
+        <div class="testi-av">LP</div>
+        <div><div class="testi-name">Laura P.</div><div class="testi-biz">Estudio de yoga · Aguascalientes</div></div>
+      </div>
+    </div>
+    <div class="testi-card r d3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"El bot de WhatsApp responde 24/7 y agenda citas mientras duermo. Recuperé la inversión en el primer mes."</p>
+      <div class="testi-author">
+        <div class="testi-av">RA</div>
+        <div><div class="testi-name">Roberto A.</div><div class="testi-biz">Taller automotriz · Aguascalientes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" style="padding-top:0">
+  <h2 class="r">Preguntas frecuentes.</h2>
+  <p class="sub r">Las dudas que casi siempre surgen antes de tomar la decisión.</p>
+  <div class="faq r">
+    <details class="faq-item">
+      <summary class="faq-q">¿Por qué 6 meses mínimo? ¿No puedo probar un mes?</summary>
+      <p class="faq-a">Los algoritmos de Meta y Google tienen una fase de aprendizaje de 4 a 6 semanas. En el mes 1 se calibra, en el mes 2 se optimiza, y del 3 en adelante se escala. Cancelar antes equivale a arrancar el motor antes de que caliente — nunca verás el rendimiento real.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Qué pasa si no tengo presupuesto para anuncios ahora mismo?</summary>
+      <p class="faq-a">El Nivel 01 no requiere pauta pagada — construye tu presencia orgánica y prepara el terreno. Cuando estés listo para invertir en anuncios, escalar a Nivel 02 es directo porque ya tienes la base armada.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Cómo sé que voy a ver resultados reales?</summary>
+      <p class="faq-a">Definimos métricas desde el día uno: alcance, leads, citas y ventas atribuibles. Cada semana tienes acceso a tu dashboard con números reales — no likes, no impresiones, sino clientes en tu puerta.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Necesito tener conocimientos de marketing digital?</summary>
+      <p class="faq-a">No. Nosotros manejamos la estrategia, la ejecución y los reportes. Tu trabajo es atender a los clientes que el sistema genera. Hay una reunión quincenal de 30 minutos para revisión de resultados — nada más.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Puedo cambiar de nivel después de contratar?</summary>
+      <p class="faq-a">Sí. Los niveles son inclusivos — si empiezas en Nivel 01 y quieres sumar publicidad pagada, escalas a Nivel 02 sin perder nada de lo construido. También puedes bajar si cambias de etapa, aunque rara vez sucede.</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">¿Trabajan con cualquier tipo de negocio local?</summary>
+      <p class="faq-a">Nos especializamos en negocios locales en Aguascalientes con ticket de venta medio-alto: clínicas, restaurantes, inmobiliarias, talleres, tiendas físicas, servicios profesionales. Si tu negocio depende de clientes locales, el sistema funciona.</p>
+    </details>
+  </div>
+</div>
+
 <div class="cta-end">
   <h2 class="r">¿Listo para un sistema<br/>que convierte?</h2>
   <p class="r">Diagnóstico gratuito de tu presencia digital en 30 minutos.</p>
