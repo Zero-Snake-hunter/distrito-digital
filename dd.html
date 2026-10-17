@@ -1,188 +1,481 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Sistema de Conversión Digital para Negocios Locales | Aguascalientes</title>
-<meta name="description" content="Sistema de conversión digital para negocios locales en Aguascalientes. Sin agencia de publicaciones — implementamos sistemas que convierten desconocidos en clientes reales."/>
-<script>document.documentElement.classList.add('js')</script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Distrito Digital — Agencia de Marketing Digital · Aguascalientes</title>
+<meta name="description" content="Sistema de conversión digital para negocios locales en Aguascalientes. No solo publicamos contenido — generamos clientes reales."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@300;400;500&display=swap"/></noscript>
 <style>
+/* ── RESET & TOKENS ─────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bk:#07090c;--s1:#0d1117;--s2:#161b22;--bd:rgba(255,255,255,0.08);--te:#00d4c8;--go:#f5a623;--vi:#a855f7;--wh:#eef2f6;--mu:#4a5568}
-html{scroll-behavior:smooth}body{background:var(--bk);color:var(--wh);font-size:16px;line-height:1.6;overflow-x:hidden}a{text-decoration:none;color:inherit}
-.r{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}.js .r{opacity:0;transform:translateY(28px)}.js .r.in{opacity:1;transform:none}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;padding:0 40px;gap:20px;background:rgba(7,9,12,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
-.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}.brand img:first-child{height:34px;width:34px;object-fit:contain}.brand-text{height:20px;object-fit:contain}
-.nav-links{display:flex;gap:2px;margin-left:auto}.nav-links a{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;padding:6px 13px;border-radius:6px;color:var(--mu);transition:color .2s,background .2s;min-height:44px;display:flex;align-items:center}.nav-links a:hover,.nav-links a.active{color:var(--wh);background:rgba(255,255,255,.07)}
-.nav-cta{font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;color:#000!important;background:var(--te);padding:9px 18px;border-radius:6px;transition:opacity .2s;min-height:44px;display:flex;align-items:center}.nav-cta:hover{opacity:.85}
-.hamburger{display:none;background:none;border:1px solid var(--bd);color:var(--wh);width:44px;height:44px;border-radius:6px;cursor:pointer;font-size:1.1rem;margin-left:8px}
-footer{padding:40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--bd);flex-wrap:wrap;gap:20px;margin-top:80px}
-.ft-brand{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--mu)}.ft-links{display:flex;gap:20px}.ft-links a{font-size:.8rem;color:var(--mu);transition:color .2s;min-height:44px;display:flex;align-items:center}.ft-links a:hover{color:var(--te)}
-@media(max-width:768px){nav{padding:0 16px}.nav-links{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(7,9,12,.98);flex-direction:column;padding:12px;gap:4px;border-bottom:1px solid var(--bd)}.nav-links.open{display:flex}.hamburger{display:flex;align-items:center;justify-content:center}footer{flex-direction:column;text-align:center;padding:32px 16px}.ft-links{justify-content:center}}
-body{font-family:'Work Sans',sans-serif;font-weight:300}
+:root{
+  --bk:#07090c;--s1:#0d1117;--s2:#161b22;--s3:#1c2330;
+  --bd:rgba(255,255,255,.08);--bd2:rgba(255,255,255,.04);
+  --te:#00d4c8;--te2:rgba(0,212,200,.12);--te3:rgba(0,212,200,.06);
+  --go:#f5a623;--go2:rgba(245,166,35,.12);
+  --vi:#a855f7;--vi2:rgba(168,85,247,.12);
+  --wh:#eef2f6;--mu:#5a6a7a;--mu2:#8a9bac
+}
+html{scroll-behavior:smooth}
+body{background:var(--bk);color:var(--wh);font-family:'Work Sans',sans-serif;font-weight:300;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ── SCROLL REVEAL ──────────────────────────────── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.r.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── NAV ────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;display:flex;align-items:center;
+  padding:0 40px;gap:20px;
+  background:rgba(7,9,12,.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bd)
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand img:first-child{height:34px;width:34px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,212,200,.4))}
+.brand-text{height:20px;object-fit:contain}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{
+  font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;
+  padding:6px 13px;border-radius:6px;color:var(--mu);
+  transition:color .2s,background .2s;min-height:44px;display:flex;align-items:center
+}
+.nav-links a:hover,.nav-links a.active{color:var(--wh);background:rgba(255,255,255,.07)}
+.nav-cta{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;
+  color:#000!important;background:var(--te);padding:9px 18px;border-radius:6px;
+  transition:opacity .2s,transform .2s;min-height:44px;display:flex;align-items:center
+}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px)}
+.hamburger{
+  display:none;background:none;border:1px solid var(--bd);
+  color:var(--wh);width:44px;height:44px;border-radius:6px;
+  cursor:pointer;font-size:1.1rem;margin-left:8px
+}
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-links{
+    display:none;position:fixed;top:60px;left:0;right:0;
+    background:rgba(7,9,12,.98);flex-direction:column;
+    padding:12px;gap:4px;border-bottom:1px solid var(--bd)
+  }
+  .nav-links.open{display:flex}
+  .hamburger{display:flex;align-items:center;justify-content:center}
+}
+
+/* ── MAIN ───────────────────────────────────────── */
 main{padding-top:60px}
-.hero{padding:80px 40px 72px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-80px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,200,.1) 0%,transparent 70%);pointer-events:none}
+
+/* ── HERO ───────────────────────────────────────── */
+.hero{
+  max-width:1200px;margin:0 auto;
+  padding:80px 40px 72px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;
+  position:relative;overflow:hidden
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-120px;left:-100px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,212,200,.09) 0%,transparent 65%);
+  pointer-events:none
+}
+.hero-left{}
 .hero-logos{display:flex;align-items:center;gap:14px;margin-bottom:40px}
-.hero-logos img:first-child{height:64px;width:64px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(0,212,200,.35))}
-.hero-logos img:last-child{height:32px;object-fit:contain}
-.eyebrow{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--te);margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.eyebrow::before{content:'';width:24px;height:1px;background:var(--te)}
-.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.8rem,6.5vw,5rem);font-weight:800;letter-spacing:-.03em;line-height:.98;margin-bottom:20px;max-width:700px}
+.hero-logos img:first-child{height:56px;width:56px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(0,212,200,.4))}
+.hero-logos img:last-child{height:28px;object-fit:contain}
+.eyebrow{
+  font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--te);
+  margin-bottom:18px;display:flex;align-items:center;gap:8px
+}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--te)}
+.hero h1{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(2.6rem,5.5vw,4.2rem);
+  font-weight:800;letter-spacing:-.03em;line-height:.97;
+  margin-bottom:22px
+}
 .hero h1 em{font-style:normal;color:var(--te)}
-.hero p{color:#6b7c8d;max-width:460px;margin-bottom:36px;font-size:1rem}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:7px;transition:transform .2s,opacity .2s;min-height:44px;cursor:pointer}
-.btn-te{background:var(--te);color:#000;box-shadow:0 0 20px rgba(0,212,200,.2)}.btn-te:hover{transform:translateY(-2px)}
-.btn-gh{border:1px solid var(--bd);color:var(--wh)}.btn-gh:hover{background:rgba(255,255,255,.05)}
-.mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);max-width:680px;margin:56px 0 0;border-radius:11px;overflow:hidden}
-.mkt-stat{background:var(--s2);padding:22px 18px}
-.mkt-n{font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:var(--te)}
-.mkt-l{font-size:.75rem;color:var(--mu);margin-top:2px}
+.hero-desc{color:var(--mu2);max-width:440px;margin-bottom:36px;font-size:1rem}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.88rem;
+  padding:13px 26px;border-radius:7px;
+  transition:transform .2s,opacity .2s,box-shadow .2s;
+  min-height:44px;cursor:pointer
+}
+.btn-te{
+  background:var(--te);color:#000;
+  box-shadow:0 0 24px rgba(0,212,200,.25)
+}
+.btn-te:hover{transform:translateY(-2px);box-shadow:0 4px 32px rgba(0,212,200,.35)}
+.btn-gh{
+  border:1px solid var(--bd);color:var(--wh);
+  background:rgba(255,255,255,.03)
+}
+.btn-gh:hover{background:rgba(255,255,255,.07)}
+
+/* Stats strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden;max-width:500px}
+.stat{background:var(--s2);padding:18px 16px}
+.stat-n{font-family:'Outfit',sans-serif;font-size:1.55rem;font-weight:800;color:var(--te)}
+.stat-l{font-size:.73rem;color:var(--mu);margin-top:2px;line-height:1.3}
+
+/* ── DASHBOARD WIDGET (hero derecho) ────────────── */
+.hero-right{position:relative}
+.dash{
+  background:var(--s2);
+  border:1px solid var(--bd);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(0,212,200,.08);
+  position:relative
+}
+.dash::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--te),transparent)
+}
+.dash-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--bd);
+  background:var(--s1)
+}
+.dash-dots{display:flex;gap:6px}
+.dash-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12)}
+.dash-title{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
+.dash-live{display:flex;align-items:center;gap:5px;font-size:.66rem;color:var(--te)}
+.dash-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--te);animation:pulse 1.6s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.dash-body{padding:20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.kpi{background:var(--bk);border:1px solid var(--bd2);border-radius:10px;padding:14px 16px}
+.kpi-l{font-size:.68rem;color:var(--mu);margin-bottom:4px}
+.kpi-v{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800}
+.kpi.k1 .kpi-v{color:var(--te)}
+.kpi.k2 .kpi-v{color:var(--go)}
+.kpi.k3 .kpi-v{color:#22c55e}
+.kpi.k4 .kpi-v{color:var(--vi)}
+.kpi-delta{font-size:.7rem;margin-top:2px}
+.kpi.k1 .kpi-delta,.kpi.k3 .kpi-delta{color:#22c55e}
+.kpi.k2 .kpi-delta,.kpi.k4 .kpi-delta{color:var(--mu)}
+
+/* Chart */
+.chart-wrap{grid-column:1/-1;background:var(--bk);border:1px solid var(--bd2);border-radius:10px;padding:16px}
+.chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.chart-head span:first-child{font-size:.7rem;color:var(--mu)}
+.chart-head span:last-child{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;color:var(--te)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:64px}
+.bar{
+  flex:1;border-radius:3px 3px 0 0;
+  background:linear-gradient(180deg,var(--te) 0%,rgba(0,212,200,.3) 100%);
+  animation:growUp .8s ease both
+}
+@keyframes growUp{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+.bar:nth-child(1){height:30%;animation-delay:.05s}
+.bar:nth-child(2){height:45%;animation-delay:.1s}
+.bar:nth-child(3){height:38%;animation-delay:.15s}
+.bar:nth-child(4){height:60%;animation-delay:.2s}
+.bar:nth-child(5){height:52%;animation-delay:.25s}
+.bar:nth-child(6){height:72%;animation-delay:.3s}
+.bar:nth-child(7){height:65%;animation-delay:.35s}
+.bar.current{background:var(--te);box-shadow:0 0 10px rgba(0,212,200,.5)}
+.bar-labels{display:flex;gap:6px;margin-top:6px}
+.bar-labels span{flex:1;font-size:.58rem;color:var(--mu);text-align:center}
+
+/* Pipeline */
+.pipeline{grid-column:1/-1;background:var(--bk);border:1px solid var(--bd2);border-radius:10px;padding:14px 16px}
+.pipe-head{font-size:.68rem;color:var(--mu);margin-bottom:10px}
+.pipe-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.pipe-row:last-child{margin-bottom:0}
+.pipe-icon{font-size:.8rem;width:20px;text-align:center}
+.pipe-label{font-size:.72rem;flex:1;color:var(--mu2)}
+.pipe-bar-wrap{width:80px;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.pipe-fill{height:100%;border-radius:3px;animation:fillIn 1.2s ease both}
+@keyframes fillIn{from{width:0%}to{width:var(--w)}}
+.pipe-n{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;width:28px;text-align:right}
+.pipe-row.p1 .pipe-fill{background:var(--te);--w:85%}.pipe-row.p1 .pipe-n{color:var(--te)}
+.pipe-row.p2 .pipe-fill{background:var(--go);--w:58%;animation-delay:.1s}.pipe-row.p2 .pipe-n{color:var(--go)}
+.pipe-row.p3 .pipe-fill{background:#22c55e;--w:34%;animation-delay:.2s}.pipe-row.p3 .pipe-n{color:#22c55e}
+
+/* ── SECCIÓN: PROBLEMA ──────────────────────────── */
 .sec{max-width:1100px;margin:0 auto;padding:80px 40px}
-.ey{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--te);margin-bottom:12px}
-h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
-.sub{color:#5a6a7a;max-width:500px;margin-bottom:44px;font-size:.95rem}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:56px}
+.ey{
+  font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--te);
+  margin-bottom:12px
+}
+.sec-h{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1.8rem,3.5vw,2.6rem);
+  font-weight:800;letter-spacing:-.025em;margin-bottom:12px
+}
+.sec-sub{color:var(--mu);max-width:480px;margin-bottom:44px;font-size:.95rem}
+
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:56px}
 .cmp-col{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:28px 24px}
-.cmp-col.us{border-color:var(--te);background:rgba(0,212,200,.03)}
-.cmp-col h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:18px;color:var(--mu)}
+.cmp-col.us{border-color:rgba(0,212,200,.3);background:var(--te3)}
+.cmp-col h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:18px;color:var(--mu);text-transform:uppercase;letter-spacing:.07em}
 .cmp-col.us h3{color:var(--te)}
 .cmp-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.cmp-col ul li{font-size:.87rem;display:flex;gap:9px;line-height:1.5}
-.x{color:#ef4444;flex-shrink:0}.ok{color:var(--te);flex-shrink:0}
-.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.fn{background:var(--s2);border:1px solid var(--bd);border-radius:11px;padding:22px 14px;text-align:center;position:relative}
-.fn::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--te);font-size:1rem;z-index:1}
+.cmp-col ul li{font-size:.86rem;display:flex;gap:10px;line-height:1.5;align-items:flex-start}
+.x{color:#ef4444;flex-shrink:0;margin-top:1px}
+.ok{color:var(--te);flex-shrink:0;margin-top:1px}
+
+/* ── SECCIÓN: EL SISTEMA (funnel) ───────────────── */
+.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:40px}
+.fn{
+  background:var(--s2);border:1px solid var(--bd);
+  border-radius:12px;padding:24px 16px;text-align:center;
+  position:relative;transition:border-color .2s,background .2s
+}
+.fn:hover{border-color:rgba(0,212,200,.25);background:var(--te3)}
+.fn::after{
+  content:'›';
+  position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  color:var(--te);font-size:1.1rem;z-index:1;opacity:.5
+}
 .fn:last-child::after{display:none}
-.fn-n{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:rgba(0,212,200,.3);margin-bottom:6px}
-.fn h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:.8rem;margin-bottom:5px}
-.fn p{font-size:.74rem;color:#5a6a7a;line-height:1.5}
+.fn-n{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:rgba(0,212,200,.2);margin-bottom:8px}
+.fn h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--wh)}
+.fn p{font-size:.73rem;color:var(--mu);line-height:1.4}
+
+/* ── SECCIÓN: PLANES ────────────────────────────── */
 .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.lv{background:var(--s2);border:1px solid var(--bd);border-radius:16px;padding:30px 22px;position:relative;overflow:hidden}
-.lv::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.lv{
+  background:var(--s2);border:1px solid var(--bd);
+  border-radius:16px;padding:30px 24px;position:relative;overflow:hidden
+}
+.lv::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .lv1::before{background:var(--te)}.lv2::before{background:var(--go)}.lv3::before{background:var(--vi)}
-.lv-num{font-family:'Outfit',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-.lv1 .lv-num{color:var(--te)}.lv2 .lv-num{color:var(--go)}.lv3 .lv-num{color:var(--vi)}
-.lv h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px}
-.lv-price{font-family:'Outfit',sans-serif;font-size:2.1rem;font-weight:800;margin:12px 0 2px}
+.lv.featured{border-color:rgba(245,166,35,.3);background:rgba(245,166,35,.03)}
+.lv.featured .badge{
+  position:absolute;top:18px;right:18px;
+  font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  background:var(--go);color:#000;
+  padding:3px 9px;border-radius:20px
+}
+.lv-tag{font-family:'Outfit',sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.lv1 .lv-tag{color:var(--te)}.lv2 .lv-tag{color:var(--go)}.lv3 .lv-tag{color:var(--vi)}
+.lv h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:4px}
+.lv-tagline{font-size:.8rem;color:var(--mu);margin-bottom:16px}
+.lv-price{font-family:'Outfit',sans-serif;font-size:2.3rem;font-weight:800;line-height:1}
 .lv1 .lv-price{color:var(--te)}.lv2 .lv-price{color:var(--go)}.lv3 .lv-price{color:var(--vi)}
-.lv-per{font-size:.78rem;color:var(--mu);margin-bottom:18px}
-.lv ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.lv ul li{font-size:.84rem;color:#8a9bac;display:flex;gap:8px}
-.lv1 ul li::before{content:'›';color:var(--te);font-size:1rem}.lv2 ul li::before{content:'›';color:var(--go);font-size:1rem}.lv3 ul li::before{content:'›';color:var(--vi);font-size:1rem}
-.lv-btn{display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;padding:11px;border-radius:7px;transition:opacity .2s;min-height:44px}
-.lv1 .lv-btn{border:1px solid var(--te);color:var(--te)}.lv2 .lv-btn{background:var(--go);color:#000}.lv3 .lv-btn{border:1px solid var(--vi);color:var(--vi)}.lv-btn:hover{opacity:.85}
+.lv-per{font-size:.76rem;color:var(--mu);margin-top:4px;margin-bottom:20px}
+.lv-divider{height:1px;background:var(--bd);margin-bottom:18px}
+.lv ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.lv ul li{font-size:.83rem;color:var(--mu2);display:flex;gap:9px;line-height:1.4;align-items:flex-start}
+.lv ul li::before{content:'›';font-size:1rem;flex-shrink:0;margin-top:-1px}
+.lv1 ul li::before{color:var(--te)}.lv2 ul li::before{color:var(--go)}.lv3 ul li::before{color:var(--vi)}
+.lv-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.84rem;
+  padding:12px;border-radius:8px;transition:opacity .2s,transform .2s;min-height:44px
+}
+.lv1 .lv-btn{border:1px solid rgba(0,212,200,.4);color:var(--te)}.lv1 .lv-btn:hover{background:var(--te2)}
+.lv2 .lv-btn{background:var(--go);color:#000}.lv2 .lv-btn:hover{opacity:.9;transform:translateY(-1px)}
+.lv3 .lv-btn{border:1px solid rgba(168,85,247,.4);color:var(--vi)}.lv3 .lv-btn:hover{background:var(--vi2)}
+
+/* Add-ons */
 .addons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:40px}
-.ao{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:18px 14px;text-align:center}
-.ao-ico{font-size:1.3rem;margin-bottom:7px}
+.ao{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:18px 16px;transition:border-color .2s}
+.ao:hover{border-color:rgba(255,255,255,.16)}
+.ao-ico{font-size:1.2rem;margin-bottom:8px}
 .ao h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;margin-bottom:3px}
-.ao p{font-size:.73rem;color:var(--mu)}
-.lv-pin{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--go);color:#000;font-family:'Outfit',sans-serif;font-weight:700;font-size:.66rem;padding:3px 14px;border-radius:100px;white-space:nowrap}
-.lv2{border-color:rgba(245,166,35,.35);box-shadow:0 0 40px rgba(245,166,35,.06)}
-.cta-end{text-align:center;padding:72px 40px;background:rgba(0,212,200,.03);border-top:1px solid var(--bd)}
-.cta-end h2{margin-bottom:12px}.cta-end p{color:var(--mu);margin-bottom:32px}
-/* Hero two-col */
-.hero-inner{display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:center}
-.hero-dash{background:var(--s1);border:1px solid var(--bd);border-radius:14px;overflow:hidden;flex-shrink:0}
-.dash-head{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd);background:var(--s2)}
-.dash-status{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;color:var(--te);display:flex;align-items:center;gap:6px}
-.dash-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--te);flex-shrink:0;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.dash-period{font-size:.68rem;color:var(--mu)}
-.dash-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd)}
-.dm{background:var(--s1);padding:16px 14px}
-.dm-val{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;color:var(--wh);line-height:1;margin-bottom:3px}
-.dm-lbl{font-size:.7rem;color:var(--mu);margin-bottom:3px}
-.dm-delta{font-size:.68rem;color:var(--te)}
-.dash-bar{padding:14px 18px;border-top:1px solid var(--bd)}
-.dash-bar-lbl{display:flex;justify-content:space-between;font-size:.68rem;color:var(--mu);margin-bottom:7px}
-.dash-bar-lbl span:last-child{color:var(--te);font-weight:600;font-family:'Outfit',sans-serif}
-.dash-bar-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.dash-bar-fill{height:100%;background:var(--te);border-radius:2px;width:68%}
-.dash-foot{padding:10px 18px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
-.dash-foot span{font-size:.64rem;color:var(--mu)}
-.dash-foot strong{font-family:'Outfit',sans-serif;font-size:.64rem;font-weight:600;color:rgba(0,212,200,.4)}
-/* Commitment note */
-.ctx-note{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;background:rgba(255,255,255,.015);border:1px solid var(--bd);border-radius:10px;margin-top:28px}
-.ctx-note-ico{font-size:.9rem;flex-shrink:0;padding-top:2px;opacity:.5}
-.ctx-note p{font-size:.8rem;color:var(--mu);line-height:1.65}
-.ctx-note strong{color:#8a9bac;font-weight:500}
-/* Testimonials */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.testi-card{background:var(--s2);border:1px solid var(--bd);border-radius:14px;padding:24px 22px}
-.testi-stars{color:var(--go);font-size:.8rem;letter-spacing:3px;margin-bottom:14px}
-.testi-quote{font-size:.87rem;color:#7a8b9c;line-height:1.75;margin-bottom:18px}
-.testi-author{display:flex;align-items:center;gap:11px}
-.testi-av{width:36px;height:36px;border-radius:50%;background:var(--s1);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;color:var(--mu)}
-.testi-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:.83rem}
-.testi-biz{font-size:.7rem;color:var(--mu);margin-top:1px}
-/* FAQ */
-.faq{max-width:700px}
-.faq-item{border-bottom:1px solid var(--bd)}
-.faq-item:first-child{border-top:1px solid var(--bd)}
-.faq-q{font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;list-style:none}
-.faq-q::-webkit-details-marker{display:none}
-.faq-q::after{content:'+';font-size:1.1rem;font-weight:300;color:var(--te);flex-shrink:0;transition:transform .2s;line-height:1}
-details[open]>.faq-q::after{transform:rotate(45deg)}
-.faq-a{font-size:.86rem;color:#5a6a7a;line-height:1.75;padding-bottom:18px;max-width:620px}
-@media(max-width:900px){.cmp,.levels,.funnel{grid-template-columns:1fr}.fn::after{display:none}.addons{grid-template-columns:repeat(2,1fr)}.mkt{grid-template-columns:1fr}.hero,.cta-end{padding-left:20px;padding-right:20px}.sec{padding:60px 20px}.hero-inner{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}}
+.ao p{font-size:.72rem;color:var(--mu)}
+
+/* ── CTA FINAL ──────────────────────────────────── */
+.cta-end{
+  text-align:center;padding:88px 40px;
+  background:linear-gradient(180deg,rgba(0,212,200,.04) 0%,transparent 100%);
+  border-top:1px solid var(--bd);position:relative;overflow:hidden
+}
+.cta-end::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:500px;height:300px;
+  background:radial-gradient(ellipse,rgba(0,212,200,.08) 0%,transparent 65%);
+  pointer-events:none
+}
+.cta-end h2{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.cta-end p{color:var(--mu);margin-bottom:36px;font-size:.95rem}
+
+/* ── FOOTER ─────────────────────────────────────── */
+footer{
+  padding:40px;display:flex;align-items:center;
+  justify-content:space-between;border-top:1px solid var(--bd);
+  flex-wrap:wrap;gap:20px;margin-top:0
+}
+.ft-brand{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--mu)}
+.ft-brand img{height:28px;width:28px;object-fit:contain}
+.ft-links{display:flex;gap:20px}
+.ft-links a{font-size:.8rem;color:var(--mu);transition:color .2s;min-height:44px;display:flex;align-items:center}
+.ft-links a:hover{color:var(--te)}
+.ft-copy{font-size:.72rem;color:rgba(90,106,122,.6);text-align:center;padding-bottom:12px;margin-top:-16px}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1020px){
+  .hero{grid-template-columns:1fr;gap:40px}
+  .hero-right{max-width:520px;margin:0 auto;width:100%}
+  .funnel{grid-template-columns:repeat(3,1fr)}
+  .fn:nth-child(3)::after,.fn:nth-child(5)::after{display:none}
+}
+@media(max-width:768px){
+  .hero,.sec,.cta-end{padding-left:20px;padding-right:20px}
+  .hero{padding-top:52px;padding-bottom:52px}
+  .sec{padding-top:60px;padding-bottom:60px}
+  .cmp{grid-template-columns:1fr}
+  .levels{grid-template-columns:1fr}
+  .funnel{grid-template-columns:1fr 1fr}
+  .fn::after{display:none}
+  .addons{grid-template-columns:repeat(2,1fr)}
+  .stats{max-width:100%}
+  footer{flex-direction:column;text-align:center;padding:32px 20px}
+  .ft-links{justify-content:center}
+}
+@media(max-width:420px){
+  .funnel{grid-template-columns:1fr}
+  .dash-body{grid-template-columns:1fr}
+  .chart-wrap,.pipeline{grid-column:auto}
+}
 </style>
 </head>
 <body>
-<nav><a href="/" class="brand"><picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture><picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture></a><div class="nav-links"><a href="/" >Inicio</a><a href="/fucho.html" >FuchoMX</a><a href="/sefirot.html" >Sefirot</a><a href="/bots.html" >Bots IA</a><a href="/dd.html" class=active>Agencia</a></div><a href="https://wa.me/524492807269" class="nav-cta" target="_blank">Contactar</a><button class="hamburger">&#9776;</button></nav>
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <a href="/" class="brand">
+    <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD" width="34" height="34"/></picture>
+    <picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital" class="brand-text"/></picture>
+  </a>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/fucho.html">FuchoMX</a>
+    <a href="/sefirot.html">Sefirot</a>
+    <a href="/bots.html">Bots IA</a>
+    <a href="/dd.html" class="active">Agencia</a>
+  </div>
+  <a href="https://wa.me/524492807269" class="nav-cta" target="_blank" rel="noopener">Contactar</a>
+  <button class="hamburger" aria-label="Menú">&#9776;</button>
+</nav>
+
 <main>
-<div class="hero" style="max-width:1200px;margin:0 auto">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-logos">
-        <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture>
-        <picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture>
-      </div>
-      <div class="eyebrow">12 años · Aguascalientes, México</div>
-      <h1>Sistema de<br/>crecimiento<br/>digital para<br/>negocios <em>locales.</em></h1>
-      <p>No solo publicamos contenido — implementamos sistemas de conversión que convierten desconocidos en clientes reales.</p>
-      <div class="cta-row">
-        <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te" target="_blank">💬 Diagnóstico gratuito</a>
-        <a href="#niveles" class="btn btn-gh">Ver planes →</a>
-      </div>
-      <div class="mkt r">
-        <div class="mkt-stat"><div class="mkt-n">1.2M</div><div class="mkt-l">Internautas en Aguascalientes</div></div>
-        <div class="mkt-stat"><div class="mkt-n">800K</div><div class="mkt-l">Usuarios en redes sociales</div></div>
-        <div class="mkt-stat"><div class="mkt-n">240K</div><div class="mkt-l">Personas alcanzables hoy</div></div>
-      </div>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-logos r">
+      <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD" width="56" height="56"/></picture>
+      <picture><source srcset="nombre_solo-06.webp" type="image/webp"/><img src="nombre_solo-06.png" alt="Distrito Digital"/></picture>
     </div>
-    <div class="hero-dash r d2">
-      <div class="dash-head">
-        <span class="dash-status">Sistema activo</span>
-        <span class="dash-period">Semana en curso</span>
+    <div class="eyebrow r">12 años · Aguascalientes, México</div>
+    <h1 class="r">Sistema de<br/>crecimiento<br/>digital para<br/>negocios <em>locales.</em></h1>
+    <p class="hero-desc r d1">No publicamos contenido al azar — implementamos sistemas de conversión que convierten desconocidos en clientes reales y medibles.</p>
+    <div class="cta-row r d2">
+      <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te" target="_blank" rel="noopener">💬 Diagnóstico gratuito</a>
+      <a href="#niveles" class="btn btn-gh">Ver planes →</a>
+    </div>
+    <div class="stats r d3">
+      <div class="stat"><div class="stat-n">1.2M</div><div class="stat-l">Internautas en AGS</div></div>
+      <div class="stat"><div class="stat-n">800K</div><div class="stat-l">Usuarios en redes</div></div>
+      <div class="stat"><div class="stat-n">240K</div><div class="stat-l">Alcanzables hoy</div></div>
+    </div>
+  </div>
+
+  <!-- Dashboard visual -->
+  <div class="hero-right r d2">
+    <div class="dash">
+      <div class="dash-top">
+        <div class="dash-dots"><span></span><span></span><span></span></div>
+        <div class="dash-title">Panel de resultados</div>
+        <div class="dash-live">En vivo</div>
       </div>
-      <div class="dash-metrics">
-        <div class="dm"><div class="dm-val">12,400</div><div class="dm-lbl">Personas alcanzadas</div><div class="dm-delta">↑ 23% vs ant.</div></div>
-        <div class="dm"><div class="dm-val">31</div><div class="dm-lbl">Leads nuevos</div><div class="dm-delta">↑ 8 esta semana</div></div>
-        <div class="dm"><div class="dm-val">14</div><div class="dm-lbl">Citas agendadas</div><div class="dm-delta">45% conversión</div></div>
-        <div class="dm"><div class="dm-val">$84,500</div><div class="dm-lbl">Pipeline MXN</div><div class="dm-delta">3 cierres pend.</div></div>
-      </div>
-      <div class="dash-bar">
-        <div class="dash-bar-lbl"><span>Meta Ads · ROAS semana</span><span>4.2x</span></div>
-        <div class="dash-bar-track"><div class="dash-bar-fill"></div></div>
-      </div>
-      <div class="dash-foot">
-        <span>Actualizado hace 2 min</span>
-        <strong>Dashboard ejemplo · Nivel 03</strong>
+      <div class="dash-body">
+        <div class="kpi k1">
+          <div class="kpi-l">Leads este mes</div>
+          <div class="kpi-v" id="kpiLeads">0</div>
+          <div class="kpi-delta">↑ +18% vs mes anterior</div>
+        </div>
+        <div class="kpi k2">
+          <div class="kpi-l">Costo por lead</div>
+          <div class="kpi-v">$38</div>
+          <div class="kpi-delta">MXN · Meta Ads</div>
+        </div>
+        <div class="kpi k3">
+          <div class="kpi-l">Conversión landing</div>
+          <div class="kpi-v">6.4%</div>
+          <div class="kpi-delta">↑ +1.2 pp esta semana</div>
+        </div>
+        <div class="kpi k4">
+          <div class="kpi-l">Alcance orgánico</div>
+          <div class="kpi-v">12.4K</div>
+          <div class="kpi-delta">últimos 30 días</div>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="chart-head">
+            <span>Leads por semana</span>
+            <span>+34% este mes</span>
+          </div>
+          <div class="bars" id="chartBars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar current"></div>
+          </div>
+          <div class="bar-labels">
+            <span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span><span>S7</span>
+          </div>
+        </div>
+
+        <div class="pipeline">
+          <div class="pipe-head">Pipeline de conversión</div>
+          <div class="pipe-row p1">
+            <div class="pipe-icon">👁</div>
+            <div class="pipe-label">Alcance</div>
+            <div class="pipe-bar-wrap"><div class="pipe-fill"></div></div>
+            <div class="pipe-n">12.4K</div>
+          </div>
+          <div class="pipe-row p2">
+            <div class="pipe-icon">🖱</div>
+            <div class="pipe-label">Clics</div>
+            <div class="pipe-bar-wrap"><div class="pipe-fill"></div></div>
+            <div class="pipe-n">847</div>
+          </div>
+          <div class="pipe-row p3">
+            <div class="pipe-icon">✅</div>
+            <div class="pipe-label">Leads</div>
+            <div class="pipe-bar-wrap"><div class="pipe-fill"></div></div>
+            <div class="pipe-n">54</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
- 
+
+<!-- ── EL PROBLEMA ───────────────────────────────── -->
 <div class="sec">
-  <h2 class="r">Muchos publican.<br/>Nadie tiene estrategia.</h2>
-  <p class="sub r">¿Estás en redes pero no generas clientes reales? Aquí está la diferencia.</p>
+  <div class="ey r">El problema</div>
+  <h2 class="sec-h r">Muchos publican.<br/>Nadie tiene estrategia.</h2>
+  <p class="sec-sub r">¿Estás en redes pero no generas clientes reales? Aquí está la diferencia entre publicar y <em>convertir</em>.</p>
   <div class="cmp">
     <div class="cmp-col r d1">
       <h3>Agencia tradicional</h3>
       <ul>
-        <li><span class="x">✗</span>Publica sin rumbo ni estrategia</li>
+        <li><span class="x">✗</span>Publica sin rumbo ni objetivo</li>
         <li><span class="x">✗</span>Reporta likes y seguidores</li>
         <li><span class="x">✗</span>Anuncios sin retorno medible</li>
         <li><span class="x">✗</span>Sin automatización de leads</li>
@@ -192,153 +485,177 @@ details[open]>.faq-q::after{transform:rotate(45deg)}
     <div class="cmp-col us r d2">
       <h3>Distrito Digital</h3>
       <ul>
-        <li><span class="ok">✓</span>Sistemas de conversión digital</li>
+        <li><span class="ok">✓</span>Sistema de conversión digital</li>
         <li><span class="ok">✓</span>Tráfico estratégico y medible</li>
         <li><span class="ok">✓</span>Automatización de seguimiento</li>
-        <li><span class="ok">✓</span>Embudos digitales con métricas</li>
-        <li><span class="ok">✓</span>Resultados en clientes reales</li>
+        <li><span class="ok">✓</span>Embudos con métricas reales</li>
+        <li><span class="ok">✓</span>Resultados en clientes y ventas</li>
       </ul>
     </div>
   </div>
- 
-  <h2 class="r" style="margin-bottom:40px">5 pasos que convierten<br/>desconocidos en clientes.</h2>
+
+  <!-- El sistema — 5 pasos -->
+  <div class="ey r">El sistema</div>
+  <h2 class="sec-h r">5 pasos que convierten<br/>desconocidos en clientes.</h2>
+  <p class="sec-sub r">Un embudo digital completo — cada paso alimenta al siguiente.</p>
   <div class="funnel r">
-    <div class="fn"><div class="fn-n">01</div><h3>Contenido</h3><p>Atrae a tu cliente ideal</p></div>
-    <div class="fn"><div class="fn-n">02</div><h3>Tráfico</h3><p>Meta Ads + Google Ads</p></div>
-    <div class="fn"><div class="fn-n">03</div><h3>Conversión</h3><p>WhatsApp + Landing</p></div>
-    <div class="fn"><div class="fn-n">04</div><h3>Seguimiento</h3><p>Automatización IA</p></div>
-    <div class="fn"><div class="fn-n">05</div><h3>Métricas</h3><p>Optimización continua</p></div>
+    <div class="fn d1">
+      <div class="fn-n">01</div>
+      <h3>Contenido</h3>
+      <p>Atrae a tu cliente ideal con publicaciones estratégicas</p>
+    </div>
+    <div class="fn d2">
+      <div class="fn-n">02</div>
+      <h3>Tráfico</h3>
+      <p>Meta Ads + Google Ads segmentados con precisión</p>
+    </div>
+    <div class="fn d3">
+      <div class="fn-n">03</div>
+      <h3>Conversión</h3>
+      <p>Landing page + WhatsApp optimizados para cerrar</p>
+    </div>
+    <div class="fn d4">
+      <div class="fn-n">04</div>
+      <h3>Seguimiento</h3>
+      <p>Automatización con IA para no perder ningún lead</p>
+    </div>
+    <div class="fn">
+      <div class="fn-n">05</div>
+      <h3>Métricas</h3>
+      <p>Dashboard en tiempo real — optimización continua</p>
+    </div>
   </div>
 </div>
- 
+
+<!-- ── PLANES ─────────────────────────────────────── -->
 <div class="sec" id="niveles" style="padding-top:0">
-  <div class="ey r">Niveles de servicio</div>
-  <h2 class="r">El plan para tu momento.</h2>
-  <p class="sub r">Inclusivos — solo pagas el más alto. Escala cuando estés listo.</p>
+  <div class="ey r">Planes de servicio</div>
+  <h2 class="sec-h r">El nivel correcto<br/>para tu momento.</h2>
+  <p class="sec-sub r">Los niveles son inclusivos — solo pagas el más alto. Escala cuando estés listo.</p>
+
   <div class="levels">
+    <!-- Nivel 1 -->
     <div class="lv lv1 r d1">
-      <div class="lv-num">Nivel 01</div>
+      <div class="lv-tag">Nivel 01</div>
       <h3>Presencia Activa</h3>
-      <p style="font-size:.82rem;color:var(--mu);margin-bottom:14px">Para ordenar tu presencia digital.</p>
+      <div class="lv-tagline">Para ordenar tu presencia digital.</div>
       <div class="lv-price">$6,000</div>
       <div class="lv-per">MXN / mes</div>
-      <ul><li>Gestión Facebook + Instagram</li><li>Reels estratégicos</li><li>Copywriting optimizado</li><li>Calendario editorial</li></ul>
-      <a href="https://wa.me/524492807269?text=Nivel%201" class="lv-btn" target="_blank">Empezar →</a>
+      <div class="lv-divider"></div>
+      <ul>
+        <li>Gestión Facebook + Instagram</li>
+        <li>Reels estratégicos mensuales</li>
+        <li>Copywriting optimizado</li>
+        <li>Calendario editorial</li>
+        <li>Reporte mensual de alcance</li>
+      </ul>
+      <a href="https://wa.me/524492807269?text=Me%20interesa%20el%20Nivel%201" class="lv-btn" target="_blank" rel="noopener">Empezar →</a>
     </div>
-    <div class="lv lv2 r d2">
-      <div class="lv-pin">⚡ Más popular</div>
-      <div class="lv-num">Nivel 02</div>
+
+    <!-- Nivel 2 — destacado -->
+    <div class="lv lv2 featured r d2">
+      <div class="badge">Más popular</div>
+      <div class="lv-tag">Nivel 02</div>
       <h3>Atracción de Clientes</h3>
-      <p style="font-size:.82rem;color:var(--mu);margin-bottom:14px">Para generar prospectos activamente.</p>
+      <div class="lv-tagline">Para generar prospectos activamente.</div>
       <div class="lv-price">$9,000</div>
-      <div class="lv-per">MXN / mes · incluye N1</div>
-      <ul><li>Todo el Nivel 1</li><li>Campañas Meta Ads activas</li><li>Segmentación estratégica</li><li>Captura de leads a WhatsApp</li></ul>
-      <a href="https://wa.me/524492807269?text=Nivel%202" class="lv-btn" target="_blank">Quiero este →</a>
+      <div class="lv-per">MXN / mes · incluye Nivel 1</div>
+      <div class="lv-divider"></div>
+      <ul>
+        <li>Todo el Nivel 1</li>
+        <li>Campañas Meta Ads activas</li>
+        <li>Segmentación estratégica de audiencia</li>
+        <li>Captura de leads directo a WhatsApp</li>
+        <li>Reporte de costo por lead</li>
+      </ul>
+      <a href="https://wa.me/524492807269?text=Me%20interesa%20el%20Nivel%202" class="lv-btn" target="_blank" rel="noopener">Quiero este →</a>
     </div>
+
+    <!-- Nivel 3 -->
     <div class="lv lv3 r d3">
-      <div class="lv-num">Nivel 03</div>
+      <div class="lv-tag">Nivel 03</div>
       <h3>Conversión Total</h3>
-      <p style="font-size:.82rem;color:var(--mu);margin-bottom:14px">El sistema completo.</p>
+      <div class="lv-tagline">El sistema completo.</div>
       <div class="lv-price">$14,000</div>
       <div class="lv-per">MXN / mes · incluye N1 y N2</div>
-      <ul><li>Todo el Nivel 2</li><li>Embudo digital completo</li><li>Landing page + SEO</li><li>Dashboard de métricas</li></ul>
-      <a href="https://wa.me/524492807269?text=Nivel%203" class="lv-btn" target="_blank">Quiero este →</a>
+      <div class="lv-divider"></div>
+      <ul>
+        <li>Todo el Nivel 2</li>
+        <li>Embudo digital completo</li>
+        <li>Landing page + SEO básico</li>
+        <li>Dashboard de métricas en tiempo real</li>
+        <li>Automatización de seguimiento IA</li>
+      </ul>
+      <a href="https://wa.me/524492807269?text=Me%20interesa%20el%20Nivel%203" class="lv-btn" target="_blank" rel="noopener">Contáctanos →</a>
     </div>
   </div>
-  <div class="ctx-note r">
-    <span class="ctx-note-ico">🗓</span>
-    <p><strong>Compromiso mínimo de 6 meses.</strong> Los algoritmos de Meta y Google necesitan ese tiempo para optimizarse y entregar resultados consistentes. El ciclo completo — aprendizaje, ajuste y escala — no se puede comprimir sin sacrificar resultados.</p>
-  </div>
 
-  <h2 class="r" style="margin-top:56px">Complementa tu plan.</h2>
+  <!-- Add-ons -->
+  <div class="ey r" style="margin-top:56px">Servicios adicionales</div>
+  <h2 class="sec-h r">Escala cuando estés listo.</h2>
+  <p class="sec-sub r">Combina cualquier add-on con tu plan base.</p>
   <div class="addons r">
     <div class="ao"><div class="ao-ico">🎯</div><h4>Meta Ads</h4><p>$1,300/mes + pauta</p></div>
     <div class="ao"><div class="ao-ico">🔍</div><h4>Google Ads</h4><p>$6,000/mes + pauta</p></div>
-    <div class="ao"><div class="ao-ico">🎵</div><h4>TikTok</h4><p>Admin $6k / Prod $8k</p></div>
-    <div class="ao"><div class="ao-ico">▶️</div><h4>YouTube</h4><p>Admin $6k / Prod $12k</p></div>
+    <div class="ao"><div class="ao-ico">🎵</div><h4>TikTok</h4><p>Admin $6k · Prod $8k</p></div>
+    <div class="ao"><div class="ao-ico">▶️</div><h4>YouTube</h4><p>Admin $6k · Prod $12k</p></div>
     <div class="ao"><div class="ao-ico">🤖</div><h4>Bot Activo</h4><p>$2k setup + $800/mes</p></div>
     <div class="ao"><div class="ao-ico">🧠</div><h4>Bot Inteligente</h4><p>$4k setup + $1,500/mes</p></div>
     <div class="ao"><div class="ao-ico">⭐</div><h4>Bot Maestro</h4><p>$6k setup + $2,500/mes</p></div>
     <div class="ao"><div class="ao-ico">📊</div><h4>Consultoría</h4><p>Estrategia personalizada</p></div>
   </div>
 </div>
- 
-<div class="sec" style="padding-top:0">
-  <h2 class="r">Lo que dicen nuestros clientes.</h2>
-  <p class="sub r">Negocios locales en Aguascalientes que ya tienen su sistema funcionando.</p>
-  <div class="testi-grid">
-    <div class="testi-card r d1">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"En tres meses pasamos de 5 a 30 prospectos mensuales por WhatsApp. El sistema funciona solo — yo solo cierro las citas."</p>
-      <div class="testi-author">
-        <div class="testi-av">JM</div>
-        <div><div class="testi-name">Jorge M.</div><div class="testi-biz">Clínica dental · Aguascalientes</div></div>
-      </div>
-    </div>
-    <div class="testi-card r d2">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Antes gastaba en publicidad sin saber qué funcionaba. Ahora tengo métricas reales y sé exactamente cuánto me cuesta cada cliente."</p>
-      <div class="testi-author">
-        <div class="testi-av">LP</div>
-        <div><div class="testi-name">Laura P.</div><div class="testi-biz">Estudio de yoga · Aguascalientes</div></div>
-      </div>
-    </div>
-    <div class="testi-card r d3">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"El bot de WhatsApp responde 24/7 y agenda citas mientras duermo. Recuperé la inversión en el primer mes."</p>
-      <div class="testi-author">
-        <div class="testi-av">RA</div>
-        <div><div class="testi-name">Roberto A.</div><div class="testi-biz">Taller automotriz · Aguascalientes</div></div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="sec" style="padding-top:0">
-  <h2 class="r">Preguntas frecuentes.</h2>
-  <p class="sub r">Las dudas que casi siempre surgen antes de tomar la decisión.</p>
-  <div class="faq r">
-    <details class="faq-item">
-      <summary class="faq-q">¿Por qué 6 meses mínimo? ¿No puedo probar un mes?</summary>
-      <p class="faq-a">Los algoritmos de Meta y Google tienen una fase de aprendizaje de 4 a 6 semanas. En el mes 1 se calibra, en el mes 2 se optimiza, y del 3 en adelante se escala. Cancelar antes equivale a arrancar el motor antes de que caliente — nunca verás el rendimiento real.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">¿Qué pasa si no tengo presupuesto para anuncios ahora mismo?</summary>
-      <p class="faq-a">El Nivel 01 no requiere pauta pagada — construye tu presencia orgánica y prepara el terreno. Cuando estés listo para invertir en anuncios, escalar a Nivel 02 es directo porque ya tienes la base armada.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">¿Cómo sé que voy a ver resultados reales?</summary>
-      <p class="faq-a">Definimos métricas desde el día uno: alcance, leads, citas y ventas atribuibles. Cada semana tienes acceso a tu dashboard con números reales — no likes, no impresiones, sino clientes en tu puerta.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">¿Necesito tener conocimientos de marketing digital?</summary>
-      <p class="faq-a">No. Nosotros manejamos la estrategia, la ejecución y los reportes. Tu trabajo es atender a los clientes que el sistema genera. Hay una reunión quincenal de 30 minutos para revisión de resultados — nada más.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">¿Puedo cambiar de nivel después de contratar?</summary>
-      <p class="faq-a">Sí. Los niveles son inclusivos — si empiezas en Nivel 01 y quieres sumar publicidad pagada, escalas a Nivel 02 sin perder nada de lo construido. También puedes bajar si cambias de etapa, aunque rara vez sucede.</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">¿Trabajan con cualquier tipo de negocio local?</summary>
-      <p class="faq-a">Nos especializamos en negocios locales en Aguascalientes con ticket de venta medio-alto: clínicas, restaurantes, inmobiliarias, talleres, tiendas físicas, servicios profesionales. Si tu negocio depende de clientes locales, el sistema funciona.</p>
-    </details>
-  </div>
-</div>
-
+<!-- ── CTA FINAL ──────────────────────────────────── -->
 <div class="cta-end">
   <h2 class="r">¿Listo para un sistema<br/>que convierte?</h2>
-  <p class="r">Diagnóstico gratuito de tu presencia digital en 30 minutos.</p>
-  <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te r" target="_blank">💬 Agendar diagnóstico gratuito</a>
+  <p class="r d1">Diagnóstico gratuito de tu presencia digital — 30 minutos, sin compromiso.</p>
+  <a href="https://wa.me/524492807269?text=Diagnóstico%20gratuito" class="btn btn-te r d2" target="_blank" rel="noopener">💬 Agendar diagnóstico gratuito</a>
 </div>
+
 </main>
-<footer><div class="ft-brand"><picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD"/></picture><span>Distrito Digital · Aguascalientes</span></div><div class="ft-links"><a href="https://wa.me/524492807269" target="_blank">WhatsApp</a><a href="mailto:contacto@distrito.digital">Email</a></div></footer>
-<script>document.querySelector(".hamburger").addEventListener("click",()=>document.querySelector(".nav-links").classList.toggle("open"))</script>
-<script>const _o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");_o.unobserve(x.target)}}),{threshold:.08});document.querySelectorAll(".r").forEach(e=>_o.observe(e));</script>
-</body></html>
 
+<footer>
+  <div class="ft-brand">
+    <picture><source srcset="DD_final-06.webp" type="image/webp"/><img src="DD_final-06.png" alt="DD" width="28" height="28"/></picture>
+    <span>Distrito Digital · Aguascalientes</span>
+  </div>
+  <div class="ft-links">
+    <a href="https://wa.me/524492807269" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="mailto:contacto@distrito.digital">Email</a>
+    <a href="/">Inicio</a>
+  </div>
+</footer>
+<p class="ft-copy">© 2024 Distrito Digital · Sistema de Conversión Digital</p>
 
+<!-- ── SCRIPTS ────────────────────────────────────── -->
+<script>
+// Hamburger
+document.querySelector(".hamburger").addEventListener("click",function(){
+  document.querySelector(".nav-links").classList.toggle("open")
+});
 
+// Scroll reveal
+const _o = new IntersectionObserver(e=>e.forEach(x=>{
+  if(x.isIntersecting){x.target.classList.add("in");_o.unobserve(x.target)}
+}),{threshold:.08});
+document.querySelectorAll(".r").forEach(e=>_o.observe(e));
 
-
-
-
+// Contador de leads animado
+function animateCounter(el,target,duration){
+  let start=0,step=target/duration*16;
+  const t=setInterval(()=>{
+    start+=step;
+    if(start>=target){start=target;clearInterval(t)}
+    el.textContent=Math.round(start);
+  },16);
+}
+// Trigger when KPI comes into view
+const kpiEl=document.getElementById("kpiLeads");
+const kpiObs=new IntersectionObserver(e=>{
+  if(e[0].isIntersecting){animateCounter(kpiEl,54,1200);kpiObs.disconnect()}
+},{threshold:.5});
+if(kpiEl)kpiObs.observe(kpiEl);
+</script>
+</body>
+</html>
