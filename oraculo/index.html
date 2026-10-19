@@ -27,30 +27,35 @@
 html{height:100%}
 body{
   height:100%;
-  background:var(--bk);
+  position:relative;
   color:var(--wh);
   font-family:var(--fb);
   font-weight:300;
   overflow:hidden;
   visibility:hidden; /* se revela solo si el token es correcto */
-}
-img{display:block;max-width:100%}
-button{font-family:inherit;cursor:pointer}
-input{font-family:inherit}
-::selection{background:var(--purple);color:var(--wh)}
 
-/* ── Fondo esotérico, CSS puro ──────────────────── */
-.mystic-bg{
+  /* Fondo: imagen real servida por el Worker (R2) como capa superior —
+     si todavía no existe (404) o falla la carga, esa capa simplemente no
+     se pinta y queda el degradado de abajo como fallback (comportamiento
+     estándar de CSS, sin JS). */
+  background-color:#0a0a0f;
+  background-image:
+    url("https://poketarot-worker.j-albavaladez.workers.dev/imagen/fondo"),
+    radial-gradient(ellipse at 20% 50%, #1a053380 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #6b21a820 0%, transparent 50%);
+  background-size:cover, auto, auto;
+  background-position:center, 20% 50%, 80% 20%;
+  background-repeat:no-repeat, no-repeat, no-repeat;
+  background-attachment:fixed, fixed, fixed;
+}
+/* Estrellas CSS puro, capa de fondo detrás de #app */
+body::before{
+  content:'';
   position:fixed;
   inset:0;
   z-index:0;
-  background-color:var(--bk);
+  pointer-events:none;
   background-image:
-    radial-gradient(circle at 18% 25%, rgba(107,33,168,.30), transparent 42%),
-    radial-gradient(circle at 82% 78%, rgba(212,175,55,.14), transparent 46%),
-    radial-gradient(circle at 50% 100%, rgba(107,33,168,.18), transparent 55%),
-    repeating-linear-gradient(45deg, rgba(212,175,55,.035) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(-45deg, rgba(107,33,168,.045) 0 1px, transparent 1px 64px),
     radial-gradient(1.5px 1.5px at 12% 18%, #fff8, transparent),
     radial-gradient(1.5px 1.5px at 76% 12%, #fff6, transparent),
     radial-gradient(1px 1px at 34% 62%, #fff7, transparent),
@@ -58,8 +63,16 @@ input{font-family:inherit}
     radial-gradient(1px 1px at 91% 40%, #fff6, transparent),
     radial-gradient(1.5px 1.5px at 6% 70%, #fff5, transparent),
     radial-gradient(1px 1px at 46% 8%, #fff6, transparent),
-    radial-gradient(1.5px 1.5px at 68% 48%, #fff5, transparent);
+    radial-gradient(1.5px 1.5px at 68% 48%, #fff5, transparent),
+    radial-gradient(1px 1px at 23% 91%, #fff6, transparent),
+    radial-gradient(1.5px 1.5px at 88% 65%, #fff5, transparent),
+    radial-gradient(1px 1px at 4% 42%, #fff7, transparent),
+    radial-gradient(1.5px 1.5px at 97% 88%, #fff5, transparent);
 }
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+input{font-family:inherit}
+::selection{background:var(--purple);color:var(--wh)}
 
 /* ── App shell ───────────────────────────────────── */
 #app{position:relative;z-index:1;height:100vh;width:100vw}
@@ -399,6 +412,19 @@ input{font-family:inherit}
 .layout-seis_cartas .card-art .arcana-name,
 .layout-tres_cartas .card-art .arcana-name{font-size:.72rem}
 
+/* Imagen real de la carta (R2 vía el Worker). Se pinta encima del
+   placeholder de color + texto; si falla la carga (404 mientras R2 no
+   tiene todavía la imagen, o error de red) el propio <img> se elimina
+   del DOM (ver onerror en applyCardsData) y vuelve a verse el placeholder
+   de abajo sin ningún salto visual raro. */
+.card-photo{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.card-photo.reversed{transform:rotate(180deg)}
+
 .reversed-tag{
   position:absolute;bottom:4px;right:4px;
   background:rgba(0,0,0,.55);
@@ -419,8 +445,6 @@ input{font-family:inherit}
 </style>
 </head>
 <body>
-
-<div class="mystic-bg" aria-hidden="true"></div>
 
 <div id="app">
 
@@ -503,7 +527,8 @@ document.body.style.visibility = "visible";
 // CONFIGURACIÓN
 // ============================================================
 
-var WORKER_URL = "https://poketarot-worker.j-albavaladez.workers.dev/tirada";
+var WORKER_BASE_URL = "https://poketarot-worker.j-albavaladez.workers.dev";
+var WORKER_URL = WORKER_BASE_URL + "/tirada";
 
 // Mismas posiciones que data/cards.py / worker — se usan para pintar las
 // etiquetas de posición ANTES de que llegue el evento SSE "cards", para
@@ -734,14 +759,37 @@ function applyCardsData(data) {
     var front = slot.querySelector(".card-front");
     var suitGradient = SUIT_COLORS[entry.card.suit] || SUIT_COLORS["Arcanos Mayores"];
     front.style.background = suitGradient;
+    front.innerHTML = "";
 
-    var artClass = "card-art" + (entry.reversed ? " reversed" : "");
-    front.innerHTML =
-      '<div class="' + artClass + '">' +
-        '<span class="arcana-name">' + escapeHtml(entry.card.card_name) + "</span>" +
-        '<span class="pokemon-name">' + escapeHtml(entry.card.pokemon) + "</span>" +
-      "</div>" +
-      (entry.reversed ? '<span class="reversed-tag">INVERTIDA</span>' : "");
+    // Placeholder de color + texto (siempre presente, debajo de la foto).
+    var art = document.createElement("div");
+    art.className = "card-art" + (entry.reversed ? " reversed" : "");
+    var nameEl = document.createElement("span");
+    nameEl.className = "arcana-name";
+    nameEl.textContent = entry.card.card_name;
+    var pokeEl = document.createElement("span");
+    pokeEl.className = "pokemon-name";
+    pokeEl.textContent = entry.card.pokemon;
+    art.appendChild(nameEl);
+    art.appendChild(pokeEl);
+    front.appendChild(art);
+
+    // Imagen real desde R2 vía el Worker. Si todavía no existe (404) o
+    // falla la carga, se quita a sí misma y queda el placeholder de arriba.
+    var photo = document.createElement("img");
+    photo.className = "card-photo" + (entry.reversed ? " reversed" : "");
+    photo.alt = entry.card.card_name;
+    photo.loading = "lazy";
+    photo.onerror = function () { photo.remove(); };
+    photo.src = WORKER_BASE_URL + "/imagen/" + entry.card.id;
+    front.appendChild(photo);
+
+    if (entry.reversed) {
+      var tag = document.createElement("span");
+      tag.className = "reversed-tag";
+      tag.textContent = "INVERTIDA";
+      front.appendChild(tag);
+    }
   });
 }
 
@@ -988,12 +1036,6 @@ function typeSection(tag, meta, onComplete) {
 
 function scrollPanelToBottom() {
   els.panelContent.scrollTop = els.panelContent.scrollHeight;
-}
-
-function escapeHtml(str) {
-  var div = document.createElement("div");
-  div.textContent = str == null ? "" : String(str);
-  return div.innerHTML;
 }
 
 })();
