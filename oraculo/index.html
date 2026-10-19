@@ -268,6 +268,33 @@ input{font-family:inherit}
 #restart-btn:hover{border-color:var(--gold)}
 #restart-btn[hidden]{display:none}
 
+/* ── Zoom de carta (lightbox) ──────────────────────── */
+#zoom-modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000000cc;
+  cursor:zoom-out;
+  padding:2rem;
+  opacity:0;
+  animation:zoomFadeIn .2s ease forwards;
+}
+#zoom-modal[hidden]{display:none}
+@keyframes zoomFadeIn{from{opacity:0}to{opacity:1}}
+#zoom-modal-img{
+  max-width:90vw;
+  max-height:90vh;
+  width:auto;height:auto;
+  object-fit:contain;
+  border-radius:12px;
+  border:2px solid var(--gold);
+  box-shadow:0 20px 70px rgba(0,0,0,.8);
+}
+#zoom-modal-img.reversed{transform:rotate(180deg)}
+
 /* ── Capa de barajado ─────────────────────────────── */
 #shuffle-layer{
   position:absolute;
@@ -507,6 +534,11 @@ input{font-family:inherit}
     </aside>
   </section>
 
+  <!-- ── Zoom de carta (lightbox) ──────────────────── -->
+  <div id="zoom-modal" hidden>
+    <img id="zoom-modal-img" alt=""/>
+  </div>
+
 </div>
 
 <script>
@@ -610,7 +642,9 @@ var els = {
   spreadLayout: document.getElementById("spread-layout"),
   panelContent: document.getElementById("panel-content"),
   panelHint: document.getElementById("panel-hint"),
-  restartBtn: document.getElementById("restart-btn")
+  restartBtn: document.getElementById("restart-btn"),
+  zoomModal: document.getElementById("zoom-modal"),
+  zoomModalImg: document.getElementById("zoom-modal-img")
 };
 
 var selectedSpread = null;
@@ -661,6 +695,7 @@ function resetToGate() {
   els.panelContent.innerHTML = '<p class="panel-empty">El oráculo se prepara…</p>';
   els.panelHint.hidden = true;
   els.restartBtn.hidden = true;
+  closeZoomModal();
   state = null;
   document.removeEventListener("keydown", onKeydown);
 }
@@ -752,7 +787,11 @@ function buildFaceDownLayout(spreadType) {
     slot.appendChild(perspective);
 
     slot.addEventListener("click", function () {
-      flipCard(pos.pos);
+      if (slot.classList.contains("flipped")) {
+        openZoomModal(pos.pos);
+      } else {
+        flipCard(pos.pos);
+      }
     });
 
     layout.appendChild(slot);
@@ -839,7 +878,43 @@ function nextUnflippedPos() {
   return null;
 }
 
+// ── Zoom de carta (lightbox) ─────────────────────
+// Solo aplica a cartas ya volteadas — no interrumpe ni adelanta la
+// tirada: el estado de qué cartas siguen boca abajo no cambia mientras
+// el modal está abierto.
+function openZoomModal(pos) {
+  if (!state || !state.cardsData) return;
+  var entry = state.cardsData[pos];
+  if (!entry) return;
+
+  els.zoomModalImg.src = WORKER_BASE_URL + "/imagen/" + entry.card.id;
+  els.zoomModalImg.alt = entry.card.card_name;
+  els.zoomModalImg.classList.toggle("reversed", !!entry.reversed);
+  els.zoomModal.hidden = false;
+}
+
+function closeZoomModal() {
+  els.zoomModal.hidden = true;
+}
+
+els.zoomModal.addEventListener("click", closeZoomModal);
+// Si la imagen grande no carga, no tiene sentido dejar el modal abierto
+// mostrando un ícono roto — se cierra solo.
+els.zoomModalImg.addEventListener("error", closeZoomModal);
+
 function onKeydown(e) {
+  var modalOpen = !els.zoomModal.hidden;
+
+  if (e.code === "Escape" && modalOpen) {
+    closeZoomModal();
+    e.preventDefault();
+    return;
+  }
+  // Con el modal abierto no debe colarse ninguna otra tecla hacia el
+  // flujo de la tirada (p.ej. ESPACIO no debe voltear la siguiente carta
+  // mientras se está viendo el zoom).
+  if (modalOpen) return;
+
   if (e.code !== "Space") return;
   var tag = (document.activeElement && document.activeElement.tagName) || "";
   if (tag === "INPUT" || tag === "TEXTAREA") return;
