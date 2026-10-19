@@ -380,6 +380,12 @@ input{font-family:inherit}
 }
 .card-back .sigil{color:var(--gold);font-size:1.9rem;text-shadow:0 0 10px rgba(212,175,55,.6)}
 .layout-cruz_celta .card-back .sigil{font-size:1.1rem}
+.card-back-photo{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
 
 .card-front{
   transform:rotateY(180deg);
@@ -726,6 +732,15 @@ function buildFaceDownLayout(spreadType) {
     var back = document.createElement("div");
     back.className = "card-face card-back";
     back.innerHTML = '<span class="sigil">✦</span>';
+    // Dorso real desde R2. Si falla (404/red) se autoelimina y queda el
+    // sigilo ✦ de abajo como fallback, igual que con las fotos de frente.
+    var backPhoto = document.createElement("img");
+    backPhoto.className = "card-back-photo";
+    backPhoto.alt = "Dorso de la carta";
+    backPhoto.loading = "lazy";
+    backPhoto.onerror = function () { backPhoto.remove(); };
+    backPhoto.src = WORKER_BASE_URL + "/imagen/card_back.jpg";
+    back.appendChild(backPhoto);
 
     var front = document.createElement("div");
     front.className = "card-face card-front";
